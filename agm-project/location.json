@@ -232,7 +232,7 @@
       "concaveType": 1,
       "concaveCode": "3G_HONGVL153",
       "source": 1,
-      "lng":"107.258449",
+      "lng": "107.258449",
       "lat": "21.063997",
       "radius": "1040",
       "address": "Cẩm Phả, Đông Triều, Quảng Ninh",
@@ -466,7 +466,13 @@
       "locationName": "T280001021",
       "concaveSameLocationAndConcaveType2g": "2G_HONGVL1",
       "id": 499
+    },
+    {
+      "address": "Trung Quốc",
+      "lat": "35.861660",
+      "lng": "104.195396",
+      "radius": "1200",
+      "id": 500
     }
-    
   ]
 }

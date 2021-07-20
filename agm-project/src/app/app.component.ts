@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader} from '@agm/core';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -27,12 +28,13 @@ export class AppComponent implements OnInit {
   
 
   public marker:any;
-  marker1: any;
+  dataTable: any;
   circle:any;
   type:any;
 
   public geoCoder:any;
-  address1:string|any;
+  addressSearch:string|any;
+  dataSearch:any;
 
   parsedJson: any;
   postData: any;
@@ -51,10 +53,7 @@ export class AppComponent implements OnInit {
   public searchElementRef: ElementRef | any;
 
   constructor(private http: HttpClient, private ngZone: NgZone, private mapsAPILoader: MapsAPILoader){
-    //   this.http.post(this.url,this.postData).toPromise().then((data) => {
-    //     console.log(data); 
-    // });
-
+  
   }
 
   ngOnInit(): void {
@@ -70,6 +69,7 @@ export class AppComponent implements OnInit {
           // lay ket qua dia diem
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
+          console.log("Place:", place)
           // xac minh ket qua
           if(place.geometry === undefined || place.geometry === null){
             return;
@@ -78,32 +78,33 @@ export class AppComponent implements OnInit {
           // tra ve dia chi co:lat, lng, zoom
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
+          this.addressSearch = place.formatted_address;
+          console.log("address: ", this.addressSearch);
           this.zoom = 10;
         });
       });
     });
 
-
+    var body = {
+      address: 'Trung Quốc', 
+      lat: '35.861660', 
+      lng: '104.195396', 
+      radius: '1200'
+    }
      
-      // HTTP post request
-      // this.http.post<any>(this.url,{address: 'Trung Quốc', lat: '35.861660', lng: '104.195396', radius: '120'}).subscribe((data) => {
-      //    console.log(data); 
-      //   this.postData = data;
-      // });
-
-
-      // HTTP get Request
-
-       // this.http.get('/assets/api/place.json').subscribe((data) => {
-      //   this.marker = data; // hiển thị ra màn hình
-      // });
+      //HTTP post request
+      this.http.post<any>(this.url,body).subscribe((data) => {
+          this.postData = data;
+          console.log(this.postData);
+      });
 
       this.http.get(this.url).subscribe((data) => {
 
         // Object data
         console.log(data);
-        this.marker1 = data; // lấy dữ liệu hiện ra màn hình, dữ liệu chưa xử lý switch case
+        this.dataTable = data; // lấy dữ liệu hiện ra màn hình, dữ liệu chưa xử lý switch case
 
+        // marker: đã xử lý tất cả trường thông tin
         let temp: Object[]|any
         temp = data
         this.marker = temp.map((location:any) => {
@@ -164,52 +165,28 @@ export class AppComponent implements OnInit {
             ruralName: ruralName,
             locationName: locationName
         }
-      });
+        });
 
       console.log("Concave Type ", this.marker)
 
 
-        // convert lat, lng, radius sang number
+        // convert lat, lng, radius sang number => circle
         let temp1: Object[]|any
         temp1 = data
         //this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
         this.circle = temp1.map((location:any) => {
-             
-            //var address = location.address;
+
             var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
             var lng: number = +location.lng;
             var radius: number = +location.radius;
-            
-
-            // console.log({
-            //   lat: lat,
-            //   lng: lng,
-            //   radius: radius
-            // })
+        
             return{
               lat: lat,
               lng: lng,
               radius: radius
             }
         });
-        console.log("Lat Lng Radius: number: ", this.circle)
-
-        // Convert to JSON
-
-        this.stringifyJson = JSON.stringify(data);  
-        //console.log("With Stringify: " , this.stringifyJson);  
-
-        // Parse from JSON
-
-        var parsedJson = JSON.parse(this.stringifyJson);  
-        console.log("Parse JSON: " , parsedJson);  
-
-       
-        var locat = parsedJson[0];
-        console.log("Location1: ", locat);
-        console.log("Address: ", locat.address);
-        // this.parsedJson = JSON.parse(this.stringifyJson);  
-        //  console.log("Parsed JSON :" , this.parsedJson);  
+        console.log("Lat Lng Radius: number: ", this.circle)   
 
     });
 
@@ -221,27 +198,8 @@ export class AppComponent implements OnInit {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
         this.zoom = 10;
-        //this.getAddress(this.lat, this.lng);
       });
     }
   }
-
-  
-  // getAddress(lat:any, lng:any){
-  //   this.geoCoder.geocode({ 'location': { lat: lat, lng: lng } }, (results:any, status:any) => {
-  //     console.log(results);
-  //     console.log(status);
-  //     if (status === 'OK') {
-  //       if (results[0]) {
-  //         this.zoom = 9;
-  //         this.address1 = results[0].formatted_address;
-  //       } else {
-  //         window.alert('No results found');
-  //       }
-  //     } else {
-  //       window.alert('Geocoder failed due to: ' + status);
-  //     }
-  //   });
-  // }
   
 }

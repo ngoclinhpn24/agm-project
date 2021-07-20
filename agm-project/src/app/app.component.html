@@ -8,7 +8,7 @@
   <!-- Search -->
 
   <div class="form-group">
-    <label i18n="Welcome|This is my page."> Enter address</label>
+    <label> Enter address</label>
     <input type="text" name="search" class="form-control" 
           (keydown.enter) = "$event.preventDefault()" placeholder="Search Location"
           autocorrect = "off" autocapitalize="off" spellcheck="off" #search>
@@ -19,26 +19,35 @@
 
     <!-- đánh dấu vị trí -->
     <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true">
-      <!-- Hiện thông tin khi tìm kiếm -->
+
+      <!-- Hiện thông tin tooltip khi tìm kiếm -->
       <agm-info-window>
-        <div>Latitude: {{lat}}</div>
-        <div>Longitude: {{lng}}</div>
-      </agm-info-window>
-      
+        <form>
+          <div class = "info">
+            <div class = "left"><label for="addressSearch">Address</label></div>
+            <div class = "right"><input type="text" class="form-control" name="lat" value="{{addressSearch}}" readonly /></div>
+          </div>
+
+          <div class = "info">
+            <div class = "left"><label for="lat">Lat</label></div>
+            <div class = "right"><input type="text" class="form-control" name="lat" value="{{lat}}" readonly /></div>
+          </div>
+          
+          <div class = "info">
+            <div class = "left"><label for="lng">Lng</label></div>
+            <div class = "right"><input type="text" class="form-control" name="lng" value="{{lng}}" readonly /></div>
+          </div>
+        </form>     
+      </agm-info-window>   
     </agm-marker>
 
-    <!-- <agm-marker [latitude]="lat2" [longitude]="lng2" [markerDraggable]="true"></agm-marker> -->
-    <agm-marker *ngFor="let data of marker" [latitude]="data.lat" [longitude]="data.lng" 
+    <!-- Đánh dấu + hiển thị tooltip địa chỉ trong location.json -->
+    <!-- <agm-marker *ngFor="let data of marker" [latitude]="data.lat" [longitude]="data.lng" 
       [markerDraggable]="true">  
-     
-      <!-- <agm-info-window [maxWidth]="600"  class="infoWindow">   -->
           <agm-info-window class="infoWindow"> 
               <div class = "infoWindow">
                 <form>
-                 <header>{{data.provinceName}}</header>
-
-                  <!-- <div style="width: 20%; float:left"><label for="ruralName">Rural Name</label></div>
-                  <div style="width: 80%; float:right"><input type="text" class="form-control" name="ruralName" value="{{data.ruralName}}" readonly /></div> -->
+                 <header>{{data.provinceName}}</header> 
                  
                   <div class = "info">
                     <div class = "left"><label for="address">Address</label></div>
@@ -108,7 +117,7 @@
                 </form>
               </div>
           </agm-info-window> 
-    </agm-marker>
+    </agm-marker> -->
 
   
 
@@ -166,7 +175,7 @@
     </thead>
 
     <tbody>
-       <tr *ngFor="let data of marker1">
+       <tr *ngFor="let data of dataTable">
           <td>{{data.address}}</td>
           <td>{{data.concaveCode}}</td>
           <td>{{data.concaveType}}</td>
