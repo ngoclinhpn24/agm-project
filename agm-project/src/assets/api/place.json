@@ -1,0 +1,147 @@
+ [
+     {
+       "id": 1,
+       "lat": "20.453951",
+       "lng": "106.347054",
+       "label": "Thái Bình"
+     },
+     {
+       "id": 2,
+       "lat": "21.027763",
+       "lng": "105.834160",
+       "label": "Hà Nội"
+     },
+     {
+       "id": 3,
+       "lat": "20.844912",
+       "lng": "106.688087",
+       "label": "Hải Phòng"
+     },
+     {
+       "id": 4,
+       "lat": "35.861660",
+       "lng": "104.195396",
+       "label": "China"
+     },
+     {
+       "id": 5,
+       "lat": "44.0204978",
+       "lng": "72.4396548",
+       "label": "Ahmedabad"
+     },
+     {
+       "id": 6,
+       "lat": "56.130367",
+       "lng": "-106.346771",
+       "label": "Canada"
+     },
+     {
+       "id": 7,
+       "lat": "26.1594627",
+       "lng": "72.6822083",
+       "label": "Surat"
+     },
+     {
+       "id": 8,
+       "lat": "-18.229351",
+       "lng": "178.758440",
+       "label": "Viti"
+     },
+     {
+       "id": 9,
+       "lat": "22.2736308",
+       "lng": "70.7512555",
+       "label": "Rajkot"
+     },
+     {
+       "id": 10,
+       "lat": "-40.178873",
+       "lng": "-71.508971",
+       "label": "Chile"
+     },
+     {
+       "id": 11,
+       "lat": "6.839170",
+       "lng": "26.992574",
+       "label": "South Sudan"
+     },
+     {
+       "id": 12,
+       "lat": "48.690960",
+       "lng": "2.295915",
+       "label": "Paris"
+     },
+     {
+       "id": 13,
+       "lat": "52.160455",
+       "lng": "13.729325",
+       "label": "Berlin"
+     },
+     {
+       "id": 14,
+       "lat": "15.580711",
+       "lng": "108.261346",
+       "label": "Việt Nam"
+     },
+     {
+       "id": 15,
+       "lat": "12.854649",
+       "lng": "122.242235",
+       "label": "Philippines"
+     },
+     {
+       "id": 16,
+       "lat": "-29.688053",
+       "lng": "132.329674",
+       "label": "Australia"
+     },
+     {
+       "id": 17,
+       "lat": "75.845169",
+       "lng": "-763.659164",
+       "label": "Kalaallit"
+     },
+     {
+       "id": 18,
+       "lat": "-11.523088",
+       "lng": "-435.266221",
+       "label": "Peru"
+     },
+     {
+       "id": 19,
+       "lat": "0.439449",
+       "lng": "104.069640",
+       "label": "Singapore"
+     },
+     {
+       "id": 20,
+       "lat": "21.698265",
+       "lng": "79.067682",
+       "label": "India"
+     },
+     {
+       "lat": "2.811371",
+       "lng": "-71.437179",
+       "label": "Colombia",
+       "id": 23
+     },
+     {
+      "concaveType": 2,
+      "concaveCode": "4G_HONGVL1",
+      "source": 3,
+      "address": "Phạm Văn Đồng",
+      "lat": "21.041350",
+      "lng": "105.780740",
+      "radius": "1000",
+      "areaName": "Khu vực 1",
+      "provinceName": "Hà Nội",
+      "districtName": "Quận Cầu Giấy",
+      "villageName": "Phạm Văn Đồng",
+      "ruralName": null,
+      "locationName": "T280001021",
+      "concaveSameLocationAndConcaveType2g": "4G_HONGVL1",
+      "id": 500
+    }
+   ]
+
+  

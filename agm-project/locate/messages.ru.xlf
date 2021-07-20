@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template" target-language="ru">
+    <body>
+      <trans-unit id="welcome" datatype="html">
+        <source><x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Map Project<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/></source>
+        <target><x id="START_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;h2&gt;"/>Карта проекта<x id="CLOSE_HEADING_LEVEL2" ctype="x-h2" equiv-text="&lt;/h2&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">This is my page.</note>
+        <note priority="1" from="meaning">Welcome</note>
+      </trans-unit>
+
+       <trans-unit id="6284921291126486352" datatype="html">
+        <source> Enter address</source>
+        <target> Введите адрес</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">This is my page.</note>
+        <note priority="1" from="meaning">Welcome</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
