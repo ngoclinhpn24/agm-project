@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AgmCoreModule } from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM',
       //apiKey: ''
-      libraries: ['places']
+      libraries: ['places','drawing', 'geometry']
     }),
     HttpClientModule
   ],

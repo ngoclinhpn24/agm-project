@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader} from '@agm/core';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+// import * as myGlobals from './globals';
 
 @Component({
   selector: 'app-root',
@@ -26,12 +26,13 @@ export class AppComponent implements OnInit {
 
 
   
-
+  
   public marker:any;
   dataTable: any;
   circle:any;
   type:any;
 
+  
   public geoCoder:any;
   addressSearch:string|any;
   dataSearch:any;
@@ -39,6 +40,8 @@ export class AppComponent implements OnInit {
   parsedJson: any;
   postData: any;
   stringifyJson: any;
+
+
 
   url = 'http://localhost:3000/data';
 
@@ -59,11 +62,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
       
     // load dia diem, search tìm kiếm
+
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation(); // dia diem hien tai cua minh
       this.geoCoder = new google.maps.Geocoder;
 
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      // var body;
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
           // lay ket qua dia diem
@@ -80,22 +85,39 @@ export class AppComponent implements OnInit {
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
           console.log("address: ", this.addressSearch);
-          this.zoom = 10;
+          this.zoom = 10;       
         });
+        // console.log("lat: ", this.lat) => ok
+        var body = {
+          address: this.addressSearch, 
+          lat: this.lat,       
+          lng: this.lng, 
+          radius: 1200
+        }
+        console.log("body: ", body);
       });
-    });
+      // console.log("lat: ", this.lat) => undefined
 
-    var body = {
-      address: 'Trung Quốc', 
-      lat: '35.861660', 
-      lng: '104.195396', 
-      radius: '1200'
-    }
-     
-      //HTTP post request
-      this.http.post<any>(this.url,body).subscribe((data) => {
+    });
+    // console.log("lat: ", this.lat); => undefined
+
+     var body = {
+    //   address: this.addressSearch, 
+    //   lat: this.lat,
+      
+    //   lng: this.lng, 
+    //   radius: '1200'
+     }
+
+   
+    //  var body;
+    //  console.log("test body:", body); => undefined
+
+    //   //HTTP post request
+      this.http.post<any>(this.url, body).subscribe((data) => {
+
           this.postData = data;
-          console.log(this.postData);
+          console.log("postData:", this.postData);
       });
 
       this.http.get(this.url).subscribe((data) => {
@@ -175,7 +197,6 @@ export class AppComponent implements OnInit {
         temp1 = data
         //this.marker = temp.map((location:any, index: any), thi tren 58. subcribe((data))
         this.circle = temp1.map((location:any) => {
-
             var lat: number = +location.lat; // dùng parseFloat(location.lat) cũng được
             var lng: number = +location.lng;
             var radius: number = +location.radius;
