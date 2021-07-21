@@ -1,7 +1,6 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader} from '@agm/core';
-// import * as myGlobals from './globals';
 
 @Component({
   selector: 'app-root',
@@ -14,19 +13,12 @@ import { MapsAPILoader} from '@agm/core';
 export class AppComponent implements OnInit {
   title = 'AGM project';
 
-  // Hải Dương
-  // lat = 20.937342;
-  // lng = 106.314552;
-  // lat = 21.027763;
-  // lng = 105.834160;
-  // zoom = 10;
+  
   lat: string|any;
   lng: string|any;
   zoom: string|any;
 
-
-  
-  
+ 
   public marker:any;
   dataTable: any;
   circle:any;
@@ -34,16 +26,16 @@ export class AppComponent implements OnInit {
 
   
   public geoCoder:any;
-  addressSearch:string|any;
-  dataSearch:any;
+  
 
   parsedJson: any;
   postData: any;
   stringifyJson: any;
 
-  // t khai báo biến ở đây nhá
-  public searchResult : any
 
+  public searchResult : any
+  addressSearch:string|any;
+  vicinitySearch: string|any;
 
 
   url = 'http://localhost:3000/data';
@@ -67,7 +59,7 @@ export class AppComponent implements OnInit {
     // load dia diem, search tìm kiếm
 
     this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation(); // dia diem hien tai cua minh
+      this.setCurrentLocation(); // dia diem hien tai 
       this.geoCoder = new google.maps.Geocoder;
 
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
@@ -87,8 +79,10 @@ export class AppComponent implements OnInit {
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
-          console.log("address: ", this.addressSearch);
-          this.zoom = 10;       
+          this.vicinitySearch = place.vicinity;
+          this.zoom = 15; 
+
+          console.log("address: ", this.addressSearch);             
         });
         // console.log("lat: ", this.lat) => ok
         var body = {
@@ -207,7 +201,7 @@ export class AppComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.zoom = 10;
+        this.zoom = 8;
       });
     }
   }

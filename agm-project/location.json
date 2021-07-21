@@ -487,6 +487,48 @@
       "lng": 153.0255556,
       "radius": 1200,
       "id": 518
+    },
+    {
+      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
+      "lat": 20.4463471,
+      "lng": 106.3365828,
+      "radius": 1200,
+      "id": 519
+    },
+    {
+      "address": "Tx. Sơn Tây, Sơn Tây, Hà Nội, Việt Nam",
+      "lat": 21.1162257,
+      "lng": 105.495325,
+      "radius": 2200,
+      "id": 521
+    },
+    {
+      "address": "Tp. Bắc Giang, Bắc Giang, Việt Nam",
+      "lat": 21.2819921,
+      "lng": 106.1974769,
+      "radius": 2200,
+      "id": 522
+    },
+    {
+      "address": "Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội, Việt Nam",
+      "lat": 21.0461026,
+      "lng": 105.7994527,
+      "radius": 1200,
+      "id": 524
+    },
+    {
+      "address": "Нячанг, Кханьхоа, Вьетнам",
+      "lat": 12.2387911,
+      "lng": 109.1967488,
+      "radius": 1200,
+      "id": 527
+    },
+    {
+      "address": "Tp. Nha Trang, Khánh Hòa, Việt Nam",
+      "lat": 12.2387911,
+      "lng": 109.1967488,
+      "radius": 1200,
+      "id": 528
     }
   ]
 }

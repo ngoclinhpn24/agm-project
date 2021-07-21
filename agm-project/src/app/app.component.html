@@ -8,7 +8,7 @@
   <!-- Search -->
 
   <div class="form-group">
-    <label> Enter address</label>
+    <label i18n="Welcome|This is my page."> Enter address</label>
     <input type="text" name="search" class="form-control" 
           (keydown.enter) = "$event.preventDefault()" placeholder="Search Location"
           autocorrect = "off" autocapitalize="off" spellcheck="off" #search>
@@ -23,6 +23,7 @@
       <!-- Hiện thông tin tooltip khi tìm kiếm -->
       <agm-info-window>
         <form>
+          <header>{{vicinitySearch}}</header> 
           <div class = "info">
             <div class = "left"><label for="addressSearch">Address</label></div>
             <div class = "right"><input type="text" class="form-control" name="lat" value="{{addressSearch}}" readonly /></div>
@@ -121,24 +122,28 @@
 
   
 
-    <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) -->
-    <agm-circle *ngFor="let data of circle" 
+    <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) có sẵn trong location -->
+    <!-- <agm-circle *ngFor="let data of circle" 
               [latitude] = "data.lat"
               [longitude] = "data.lng"
               [radius] = "data.radius"
               [circleDraggable] = "true"
               [editable] = "true"
               [fillColor] = "'red'">
-    </agm-circle>
+    </agm-circle> -->
+
+    <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) khi search -->
     <div *ngIf="searchResult; then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock><agm-circle  
-        [latitude] = "searchResult.lat"
-        [longitude] = "searchResult.lng"
-        [radius] = "200"
-        [circleDraggable] = "true"
-        [editable] = "true"
-        [fillColor] = "'red'">
-      </agm-circle> </ng-template>
+      <ng-template #thenBlock>
+        <agm-circle  
+          [latitude] = "searchResult.lat"
+          [longitude] = "searchResult.lng"
+          [radius] = "200"
+          [circleDraggable] = "true"
+          [editable] = "true"
+          [fillColor] = "'red'">
+        </agm-circle> 
+      </ng-template>
       <ng-template #elseBlock></ng-template>
  
   </agm-map>
@@ -149,20 +154,7 @@
     <div>Latitude: {{lat}}</div>
     <div>Longitude: {{lng}}</div>
 
-  
-  <!-- <br>
 
-    <div>Latitude: {{lat}}</div>
-    <div>Longitude: {{lng}}</div> -->
-
-
-  
-  <!-- <ul *ngFor = "let data of marker">
-    <li> Address: {{data.address}} Lat: {{data.lat}} Lng: {{data.lng}} Radius: {{data.radius}}</li>
-  </ul> -->
-
-  
-  <!-- <div>Address: {{postData.address}} </div> -->
 </div>
 
 
