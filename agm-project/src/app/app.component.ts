@@ -41,6 +41,9 @@ export class AppComponent implements OnInit {
   postData: any;
   stringifyJson: any;
 
+  // t khai báo biến ở đây nhá
+  public searchResult : any
+
 
 
   url = 'http://localhost:3000/data';
@@ -94,31 +97,17 @@ export class AppComponent implements OnInit {
           lng: this.lng, 
           radius: 1200
         }
-        console.log("body: ", body);
+
+        this.searchResult = body
+
+         //HTTP post request // save location to db 
+        this.http.post<any>(this.url, body).subscribe((data) => {  
+          this.postData = data;
+        });
+
       });
-      // console.log("lat: ", this.lat) => undefined
 
     });
-    // console.log("lat: ", this.lat); => undefined
-
-     var body = {
-    //   address: this.addressSearch, 
-    //   lat: this.lat,
-      
-    //   lng: this.lng, 
-    //   radius: '1200'
-     }
-
-   
-    //  var body;
-    //  console.log("test body:", body); => undefined
-
-    //   //HTTP post request
-      this.http.post<any>(this.url, body).subscribe((data) => {
-
-          this.postData = data;
-          console.log("postData:", this.postData);
-      });
 
       this.http.get(this.url).subscribe((data) => {
 

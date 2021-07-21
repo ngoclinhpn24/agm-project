@@ -130,6 +130,17 @@
               [editable] = "true"
               [fillColor] = "'red'">
     </agm-circle>
+    <div *ngIf="searchResult; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock><agm-circle  
+        [latitude] = "searchResult.lat"
+        [longitude] = "searchResult.lng"
+        [radius] = "200"
+        [circleDraggable] = "true"
+        [editable] = "true"
+        [fillColor] = "'red'">
+      </agm-circle> </ng-template>
+      <ng-template #elseBlock></ng-template>
+ 
   </agm-map>
 
   <br>
