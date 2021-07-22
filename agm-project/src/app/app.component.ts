@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader} from '@agm/core';
 
@@ -37,8 +37,10 @@ export class AppComponent implements OnInit {
   addressSearch:string|any;
   vicinitySearch: string|any;
 
-
+  
   url = 'http://localhost:3000/data';
+
+  showInfoWindow = false;
 
   onChoseLocation(event: any){
     console.log(event);
@@ -46,6 +48,14 @@ export class AppComponent implements OnInit {
     // this.lng = event.coords.lng;
   }
 
+  onCircleClicked(){
+    alert("Nhận được lệnh click");
+    //  console.log(event);
+    // this.lat = event.coords.lat;
+    // console.log(this.lat);
+   
+    this.showInfoWindow = !this.showInfoWindow;
+  }
 
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
@@ -79,7 +89,7 @@ export class AppComponent implements OnInit {
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
-          this.vicinitySearch = place.vicinity;
+          // this.vicinitySearch = place.vicinity;
           this.zoom = 15; 
 
           console.log("address: ", this.addressSearch);             
@@ -89,7 +99,7 @@ export class AppComponent implements OnInit {
           address: this.addressSearch, 
           lat: this.lat,       
           lng: this.lng, 
-          radius: 1200
+          radius: 200
         }
 
         this.searchResult = body
@@ -172,7 +182,7 @@ export class AppComponent implements OnInit {
         }
         });
 
-      console.log("Concave Type ", this.marker)
+      // console.log("Concave Type ", this.marker)
 
 
         // convert lat, lng, radius sang number => circle

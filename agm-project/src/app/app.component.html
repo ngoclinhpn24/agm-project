@@ -18,10 +18,10 @@
   <agm-map [latitude]="lat" [longitude]="lng" [zoom] ="zoom" (mapClick) = "onChoseLocation($event)">
 
     <!-- đánh dấu vị trí -->
-    <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true">
+    <!-- <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"> -->
 
       <!-- Hiện thông tin tooltip khi tìm kiếm -->
-      <agm-info-window>
+      <!-- <agm-info-window>
         <form>
           <header>{{vicinitySearch}}</header> 
           <div class = "info">
@@ -40,7 +40,7 @@
           </div>
         </form>     
       </agm-info-window>   
-    </agm-marker>
+    </agm-marker> -->
 
     <!-- Đánh dấu + hiển thị tooltip địa chỉ trong location.json -->
     <!-- <agm-marker *ngFor="let data of marker" [latitude]="data.lat" [longitude]="data.lng" 
@@ -133,17 +133,43 @@
     </agm-circle> -->
 
     <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) khi search -->
+   
+
     <div *ngIf="searchResult; then thenBlock else elseBlock"></div>
       <ng-template #thenBlock>
         <agm-circle  
           [latitude] = "searchResult.lat"
           [longitude] = "searchResult.lng"
-          [radius] = "200"
+          [radius] = "searchResult.radius"
           [circleDraggable] = "true"
           [editable] = "true"
-          [fillColor] = "'red'">
-        </agm-circle> 
-      </ng-template>
+          [fillColor] = "'red'"
+          
+          (circleClick) = "onCircleClicked()">
+
+          <agm-info-window 
+            [latitude] = "searchResult.lat" [longitude] = "searchResult.lng"
+            [disableAutoPan] = "false" 
+            [isOpen] = "showInfoWindow" #infoWindow>
+              <form>
+                <header>{{addressSearch}}</header> 
+                <div class = "info">
+                  <div class = "left"><label for="addressSearch">Address</label></div>
+                  <div class = "right"><input type="text" class="form-control" name="lat" value="{{addressSearch}}" readonly /></div>
+                </div>
+        
+                <div class = "info">
+                  <div class = "left"><label for="lat">Lat</label></div>
+                  <div class = "right"><input type="text" class="form-control" name="lat" value="{{lat}}" readonly /></div>
+                </div>
+                
+                <div class = "info">
+                  <div class = "left"><label for="lng">Lng</label></div>
+                  <div class = "right"><input type="text" class="form-control" name="lng" value="{{lng}}" readonly /></div>
+                </div>
+              </form>     
+          </agm-info-window> 
+        </agm-circle> </ng-template>
       <ng-template #elseBlock></ng-template>
  
   </agm-map>
