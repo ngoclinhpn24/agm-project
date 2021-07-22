@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  NgZone,
-  ViewChild,
-  ElementRef,
-  Output,
-} from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader } from '@agm/core';
 
@@ -44,8 +37,8 @@ export class AppComponent implements OnInit {
     this.showInfoWindow = !this.showInfoWindow;
   }
 
-  onChoseLocation(event: any) { 
-    console.log(event, "test");
+  onChoseLocation(event: any) {
+    console.log(event, 'test');
     this.showInfoWindow = !this.showInfoWindow;
   }
   @ViewChild('search')
