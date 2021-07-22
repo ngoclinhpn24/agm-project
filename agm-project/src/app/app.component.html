@@ -1,27 +1,24 @@
-
-<div  style="text-align: center" i18n="Welcome|This is my page.@@welcome">
+<div style="text-align: center" i18n="Welcome|This is my page.@@welcome">
   <h2>Map Project</h2>
 </div>
 
-<div class="container" >
-
+<div class="container">
   <!-- Search -->
 
   <div class="form-group">
     <label i18n="Welcome|This is my page."> Enter address</label>
-    <input type="text" name="search" class="form-control" 
-          (keydown.enter) = "$event.preventDefault()" placeholder="Search Location"
-          autocorrect = "off" autocapitalize="off" spellcheck="off" #search>
+    <input type="text" name="search" class="form-control" (keydown.enter)="$event.preventDefault()"
+      placeholder="Search Location" autocorrect="off" autocapitalize="off" spellcheck="off" #search />
   </div>
 
   <!-- Hiển thị bản đồ -->
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom] ="zoom" (mapClick) = "onChoseLocation($event)">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
 
     <!-- đánh dấu vị trí -->
     <!-- <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"> -->
 
-      <!-- Hiện thông tin tooltip khi tìm kiếm -->
-      <!-- <agm-info-window>
+    <!-- Hiện thông tin tooltip khi tìm kiếm -->
+    <!-- <agm-info-window>
         <form>
           <header>{{vicinitySearch}}</header> 
           <div class = "info">
@@ -120,8 +117,6 @@
           </agm-info-window> 
     </agm-marker> -->
 
-  
-
     <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) có sẵn trong location -->
     <!-- <agm-circle *ngFor="let data of circle" 
               [latitude] = "data.lat"
@@ -133,97 +128,99 @@
     </agm-circle> -->
 
     <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) khi search -->
-   
 
-    <div *ngIf="searchResult; then thenBlock else elseBlock"></div>
-      <ng-template #thenBlock>
-        <agm-circle  
-          [latitude] = "searchResult.lat"
-          [longitude] = "searchResult.lng"
-          [radius] = "searchResult.radius"
-          [circleDraggable] = "true"
-          [editable] = "true"
-          [fillColor] = "'red'"
-          
-          (circleClick) = "onCircleClicked()">
+    <div *ngIf="searchResult; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+      <agm-circle 
+        [latitude]="searchResult.lat" 
+        [longitude]="searchResult.lng" 
+        [radius]="searchResult.radius"
+        [circleDraggable]="true" 
+        [fillColor]="'red'" 
+        [editable]="true" 
+        [clickable] = "false"
+        (circleClick)= "onCircleClicked()">
+        <!-- 
+        ng-click="onCircleClicked()"
+        (circleClick)="onCircleClicked()" 
+        [clickable] = "true"
+        (circleClick)="onCircleClicked()"-->
 
-          <agm-info-window 
-            [latitude] = "searchResult.lat" [longitude] = "searchResult.lng"
-            [disableAutoPan] = "false" 
-            [isOpen] = "showInfoWindow" #infoWindow>
-              <form>
-                <header>{{addressSearch}}</header> 
-                <div class = "info">
-                  <div class = "left"><label for="addressSearch">Address</label></div>
-                  <div class = "right"><input type="text" class="form-control" name="lat" value="{{addressSearch}}" readonly /></div>
-                </div>
-        
-                <div class = "info">
-                  <div class = "left"><label for="lat">Lat</label></div>
-                  <div class = "right"><input type="text" class="form-control" name="lat" value="{{lat}}" readonly /></div>
-                </div>
-                
-                <div class = "info">
-                  <div class = "left"><label for="lng">Lng</label></div>
-                  <div class = "right"><input type="text" class="form-control" name="lng" value="{{lng}}" readonly /></div>
-                </div>
-              </form>     
-          </agm-info-window> 
-        </agm-circle> </ng-template>
-      <ng-template #elseBlock></ng-template>
- 
+        <agm-info-window 
+          [latitude]="searchResult.lat" 
+          [longitude]="searchResult.lng" 
+          [disableAutoPan]="false"
+          [isOpen]="showInfoWindow" #infoWindow>
+          <form>
+            <header>{{ addressSearch }}</header>
+            <div class="info">
+              <div class="left"><label for="addressSearch">Address</label></div>
+              <div class="right">
+                <input type="text" class="form-control" name="lat" value="{{ addressSearch }}" readonly />
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="left"><label for="lat">Lat</label></div>
+              <div class="right">
+                <input type="text" class="form-control" name="lat" value="{{ lat }}" readonly />
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="left"><label for="lng">Lng</label></div>
+              <div class="right">
+                <input type="text" class="form-control" name="lng" value="{{ lng }}" readonly />
+              </div>
+            </div>
+          </form>
+        </agm-info-window>
+      </agm-circle>
+    </ng-template>
+    <ng-template #elseBlock></ng-template>
   </agm-map>
 
-  <br>
+  <br />
 
-
-    <div>Latitude: {{lat}}</div>
-    <div>Longitude: {{lng}}</div>
-
-
+  <div>Latitude: {{ lat }}</div>
+  <div>Longitude: {{ lng }}</div>
 </div>
-
 
 <!-- Hiển thị bảng dữ liệu -->
 <div class="tableData">
   <table>
     <thead>
-       <th>Address</th>
-       <th>Concave Code</th>
-       <th>Concave Type</th>
-       <th>Lat</th>
-       <th>Lng</th>
-       <th>Radius</th>
-       <th>Area Name</th>
-       <th>Province Name</th>
-       <th>District Name</th>
-       <th>Village Name</th>
-       <th>Rural Name</th>
-       <th>Location Name</th>
-       <th>Source</th>
+      <th>Address</th>
+      <th>Concave Code</th>
+      <th>Concave Type</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Radius</th>
+      <th>Area Name</th>
+      <th>Province Name</th>
+      <th>District Name</th>
+      <th>Village Name</th>
+      <th>Rural Name</th>
+      <th>Location Name</th>
+      <th>Source</th>
     </thead>
 
     <tbody>
-       <tr *ngFor="let data of dataTable">
-          <td>{{data.address}}</td>
-          <td>{{data.concaveCode}}</td>
-          <td>{{data.concaveType}}</td>
-          <td>{{data.lat}}</td>
-          <td>{{data.lng}}</td>
-          <td>{{data.radius}}</td>
-          <td>{{data.areaName}}</td>
-          <td>{{data.provinceName}}</td>
-          <td>{{data.districtName}}</td>
-          <td>{{data.villageName}}</td>
-          <td>{{data.ruralName}}</td>
-          <td>{{data.locationName}}</td>
-          <td>{{data.source}}</td>
-       </tr>
+      <tr *ngFor="let data of dataTable">
+        <td>{{ data.address }}</td>
+        <td>{{ data.concaveCode }}</td>
+        <td>{{ data.concaveType }}</td>
+        <td>{{ data.lat }}</td>
+        <td>{{ data.lng }}</td>
+        <td>{{ data.radius }}</td>
+        <td>{{ data.areaName }}</td>
+        <td>{{ data.provinceName }}</td>
+        <td>{{ data.districtName }}</td>
+        <td>{{ data.villageName }}</td>
+        <td>{{ data.ruralName }}</td>
+        <td>{{ data.locationName }}</td>
+        <td>{{ data.source }}</td>
+      </tr>
     </tbody>
- </table>
-
+  </table>
 </div>
-
-
-
-

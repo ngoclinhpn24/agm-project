@@ -510,144 +510,74 @@
       "id": 522
     },
     {
-      "address": "Hoàng Quốc Việt, Nghĩa Đô, Cầu Giấy, Hà Nội, Việt Nam",
-      "lat": 21.0461026,
-      "lng": 105.7994527,
-      "radius": 1200,
+      "address": "Cádiz, Tây Ban Nha",
+      "lat": 36.5270612,
+      "lng": -6.2885962,
+      "radius": 200,
+      "id": 523
+    },
+    {
+      "address": "21000, Split, Croatia",
+      "lat": 43.5081323,
+      "lng": 16.4401935,
+      "radius": 200,
       "id": 524
     },
     {
-      "address": "Нячанг, Кханьхоа, Вьетнам",
-      "lat": 12.2387911,
-      "lng": 109.1967488,
-      "radius": 1200,
+      "address": "Nice, Pháp",
+      "lat": 43.7101728,
+      "lng": 7.261953200000001,
+      "radius": 200,
+      "id": 525
+    },
+    {
+      "address": "New Orleans, Louisiana, Hoa Kỳ",
+      "lat": 29.95106579999999,
+      "lng": -90.0715323,
+      "radius": 200,
+      "id": 526
+    },
+    {
+      "address": "Dubai - Các tiểu Vương quốc Ả rập Thống nhất",
+      "lat": 25.2048493,
+      "lng": 55.2707828,
+      "radius": 200,
       "id": 527
     },
     {
-      "address": "Tp. Nha Trang, Khánh Hòa, Việt Nam",
-      "lat": 12.2387911,
-      "lng": 109.1967488,
-      "radius": 1200,
+      "address": "Las Vegas, Nevada, Hoa Kỳ",
+      "lat": 36.1699412,
+      "lng": -115.1398296,
+      "radius": 200,
       "id": 528
     },
     {
-      "address": "Tp. Hà Giang, Hà Giang, Việt Nam",
-      "lat": 22.8025588,
-      "lng": 104.9784494,
-      "radius": 1200,
+      "address": "Luân Đôn, Vương Quốc Anh",
+      "lat": 51.5073509,
+      "lng": -0.1277583,
+      "radius": 200,
       "id": 529
     },
     {
-      "address": "Tp. Hà Tĩnh, Hà Tĩnh, Việt Nam",
-      "lat": 18.3559537,
-      "lng": 105.8877494,
+      "address": "Los Angeles, California, Hoa Kỳ",
+      "lat": 34.0522342,
+      "lng": -118.2436849,
       "radius": 200,
       "id": 530
     },
     {
-      "address": "Hamburg, Đức",
-      "lat": 53.5510846,
-      "lng": 9.9936818,
+      "address": "Las Vegas, Nevada, Hoa Kỳ",
+      "lat": 36.1699412,
+      "lng": -115.1398296,
       "radius": 200,
       "id": 531
     },
     {
-      "address": "Thái Thịnh, Ngã Tư Sở, Đống Đa, Hà Nội, Việt Nam",
-      "lat": 21.0072182,
-      "lng": 105.8211644,
+      "address": "Lyon, Pháp",
+      "lat": 45.764043,
+      "lng": 4.835659,
       "radius": 200,
       "id": 532
-    },
-    {
-      "address": "Toronto, Ontario, Canada",
-      "lat": 43.653226,
-      "lng": -79.3831843,
-      "radius": 200,
-      "id": 533
-    },
-    {
-      "address": "Thái Hà, Trung Liệt, Đống Đa, Hà Nội, Việt Nam",
-      "lat": 21.0129882,
-      "lng": 105.820014,
-      "radius": 200,
-      "id": 534
-    },
-    {
-      "address": "186 Mott St, New York, NY 10012, Hoa Kỳ",
-      "lat": 40.7206929,
-      "lng": -73.9956057,
-      "radius": 200,
-      "id": 535
-    },
-    {
-      "address": "1135 Easton Ave, Somerset, NJ 08873, Hoa Kỳ",
-      "lat": 40.5176567,
-      "lng": -74.4897067,
-      "radius": 200,
-      "id": 536
-    },
-    {
-      "address": "Thái Thịnh, Ngã Tư Sở, Đống Đa, Hà Nội, Việt Nam",
-      "lat": 21.0072182,
-      "lng": 105.8211644,
-      "radius": 200,
-      "id": 537
-    },
-    {
-      "address": "Tp. Hải Dương, Hải Dương, Việt Nam",
-      "lat": 20.9373413,
-      "lng": 106.3145542,
-      "radius": 200,
-      "id": 538
-    },
-    {
-      "address": "Khánh Bình, Tx. Tân Uyên, Bình Dương, Việt Nam",
-      "lat": 11.0366901,
-      "lng": 106.7588494,
-      "radius": 200,
-      "id": 539
-    },
-    {
-      "address": "Tp. Thanh Hoá, Thanh Hoá, Việt Nam",
-      "lat": 19.806692,
-      "lng": 105.7851816,
-      "radius": 200,
-      "id": 540
-    },
-    {
-      "address": "Toronto, Ontario, Canada",
-      "lat": 43.653226,
-      "lng": -79.3831843,
-      "radius": 200,
-      "id": 541
-    },
-    {
-      "address": "Tp. Tuyên Quang, Tuyên Quang, Việt Nam",
-      "lat": 21.7767246,
-      "lng": 105.2280196,
-      "radius": 200,
-      "id": 542
-    },
-    {
-      "address": "Haridwar, Uttarakhand, Ấn Độ",
-      "lat": 29.9456906,
-      "lng": 78.16424780000001,
-      "radius": 200,
-      "id": 543
-    },
-    {
-      "address": "Tijuana, Baja California, Mexico",
-      "lat": 32.5149469,
-      "lng": -117.0382471,
-      "radius": 200,
-      "id": 544
-    },
-    {
-      "address": "Thessaloniki, Hy Lạp",
-      "lat": 40.6400629,
-      "lng": 22.9444191,
-      "radius": 200,
-      "id": 545
     }
   ]
 }
