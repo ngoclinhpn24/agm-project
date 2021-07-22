@@ -47,8 +47,6 @@ export class AppComponent implements OnInit {
   onChoseLocation(event: any) { 
     console.log(event, "test");
     this.showInfoWindow = !this.showInfoWindow;
-    //this.onCircleClicked();
-    //this.lng = event.coords.lng;
   }
   @ViewChild('search')
   public searchElementRef: ElementRef | any;

@@ -140,12 +140,7 @@
         [editable]="true" 
         [clickable] = "false"
         (circleClick)= "onCircleClicked()">
-        <!-- 
-        ng-click="onCircleClicked()"
-        (circleClick)="onCircleClicked()" 
-        [clickable] = "true"
-        (circleClick)="onCircleClicked()"-->
-
+       
         <agm-info-window 
           [latitude]="searchResult.lat" 
           [longitude]="searchResult.lng" 
@@ -180,10 +175,6 @@
     <ng-template #elseBlock></ng-template>
   </agm-map>
 
-  <br />
-
-  <div>Latitude: {{ lat }}</div>
-  <div>Longitude: {{ lng }}</div>
 </div>
 
 <!-- Hiển thị bảng dữ liệu -->

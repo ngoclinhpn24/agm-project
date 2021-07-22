@@ -475,20 +475,6 @@
       "id": 516
     },
     {
-      "address": "144 Xuân Thủy, Dịch Vọng Hậu, Cầu Giấy, Hà Nội, Việt Nam",
-      "lat": 21.0376713,
-      "lng": 105.7816301,
-      "radius": 1200,
-      "id": 517
-    },
-    {
-      "address": "17 Mayfield Rd, Moorooka QLD 4105, Úc",
-      "lat": -27.5330556,
-      "lng": 153.0255556,
-      "radius": 1200,
-      "id": 518
-    },
-    {
       "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
       "lat": 20.4463471,
       "lng": 106.3365828,
@@ -496,88 +482,39 @@
       "id": 519
     },
     {
-      "address": "Tx. Sơn Tây, Sơn Tây, Hà Nội, Việt Nam",
-      "lat": 21.1162257,
-      "lng": 105.495325,
-      "radius": 2200,
-      "id": 521
-    },
-    {
-      "address": "Tp. Bắc Giang, Bắc Giang, Việt Nam",
-      "lat": 21.2819921,
-      "lng": 106.1974769,
-      "radius": 2200,
-      "id": 522
-    },
-    {
-      "address": "Cádiz, Tây Ban Nha",
-      "lat": 36.5270612,
-      "lng": -6.2885962,
-      "radius": 200,
-      "id": 523
-    },
-    {
-      "address": "21000, Split, Croatia",
-      "lat": 43.5081323,
-      "lng": 16.4401935,
-      "radius": 200,
-      "id": 524
-    },
-    {
-      "address": "Nice, Pháp",
-      "lat": 43.7101728,
-      "lng": 7.261953200000001,
+      "address": "Köln, Đức",
+      "lat": 50.937531,
+      "lng": 6.9602786,
       "radius": 200,
       "id": 525
     },
     {
-      "address": "New Orleans, Louisiana, Hoa Kỳ",
-      "lat": 29.95106579999999,
-      "lng": -90.0715323,
+      "address": "Tp. Việt Trì, Phú Thọ, Việt Nam",
+      "lat": 21.3570099,
+      "lng": 105.352633,
       "radius": 200,
       "id": 526
-    },
-    {
-      "address": "Dubai - Các tiểu Vương quốc Ả rập Thống nhất",
-      "lat": 25.2048493,
-      "lng": 55.2707828,
-      "radius": 200,
-      "id": 527
-    },
-    {
-      "address": "Las Vegas, Nevada, Hoa Kỳ",
-      "lat": 36.1699412,
-      "lng": -115.1398296,
-      "radius": 200,
-      "id": 528
     },
     {
       "address": "Luân Đôn, Vương Quốc Anh",
       "lat": 51.5073509,
       "lng": -0.1277583,
       "radius": 200,
-      "id": 529
+      "id": 527
     },
     {
       "address": "Los Angeles, California, Hoa Kỳ",
       "lat": 34.0522342,
       "lng": -118.2436849,
       "radius": 200,
-      "id": 530
+      "id": 528
     },
     {
-      "address": "Las Vegas, Nevada, Hoa Kỳ",
-      "lat": 36.1699412,
-      "lng": -115.1398296,
+      "address": "Ma-đrít, Madrid, Tây Ban Nha",
+      "lat": 40.4167754,
+      "lng": -3.7037902,
       "radius": 200,
-      "id": 531
-    },
-    {
-      "address": "Lyon, Pháp",
-      "lat": 45.764043,
-      "lng": 4.835659,
-      "radius": 200,
-      "id": 532
+      "id": 529
     }
   ]
 }
