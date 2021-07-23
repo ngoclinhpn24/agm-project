@@ -18,7 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM',
       //apiKey: ''
-      libraries: ['places','drawing', 'geometry']
+      libraries: ['places','drawing', 'geometry', 'visualization']
     }),
     HttpClientModule
   ],

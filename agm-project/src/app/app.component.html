@@ -12,7 +12,10 @@
   </div>
 
   <!-- Hiển thị bản đồ -->
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="onChoseLocation($event)">
+  <agm-map 
+    [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
+    (mapClick)="onChoseLocation($event)"
+    (mapReady)="onMapLoad($event)">
 
     <!-- đánh dấu vị trí -->
     <!-- <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"> -->

@@ -468,13 +468,6 @@
       "id": 499
     },
     {
-      "address": "Haridwar, Uttarakhand, Ấn Độ",
-      "lat": 29.9456906,
-      "lng": 78.16424780000001,
-      "radius": 1200,
-      "id": 516
-    },
-    {
       "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
       "lat": 20.4463471,
       "lng": 106.3365828,
@@ -496,19 +489,11 @@
       "id": 526
     },
     {
-      "address": "Luân Đôn, Vương Quốc Anh",
-      "lat": 51.5073509,
-      "lng": -0.1277583,
-      "radius": 200,
-      "id": 527
-    },
-    {
       "address": "Los Angeles, California, Hoa Kỳ",
       "lat": 34.0522342,
       "lng": -118.2436849,
       "radius": 200,
       "id": 528
     }
-    
   ]
 }

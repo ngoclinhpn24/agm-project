@@ -41,6 +41,10 @@ export class AppComponent implements OnInit {
     console.log(event, 'test');
     this.showInfoWindow = !this.showInfoWindow;
   }
+
+  onMapLoad(event:any){
+    
+  }
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
 
