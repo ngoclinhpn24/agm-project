@@ -142,7 +142,7 @@
         [fillColor]="'red'" 
         [editable]="true" 
         [clickable] = "false"
-        (circleClick)= "onCircleClicked()">
+        (circleClick)= "onCircleClicked($event)">
        
         <agm-info-window 
           [latitude]="searchResult.lat" 

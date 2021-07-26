@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader } from '@agm/core';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,9 +11,9 @@ import { MapsAPILoader } from '@agm/core';
 export class AppComponent implements OnInit {
   title = 'AGM project';
 
-  lat: string | any;
-  lng: string | any;
-  zoom: string | any;
+  lat: string | any | number;
+  lng: string | any|number;
+  zoom: string | any|number;
 
   public marker: any;
   dataTable: any;
@@ -33,7 +34,12 @@ export class AppComponent implements OnInit {
 
   showInfoWindow = false;
 
-  onCircleClicked() {
+   private map: any;
+   private heatmap:any;
+  
+ 
+  // show tooltip
+  onCircleClicked(event: any) {
     this.showInfoWindow = !this.showInfoWindow;
   }
 
@@ -42,16 +48,61 @@ export class AppComponent implements OnInit {
     this.showInfoWindow = !this.showInfoWindow;
   }
 
-  onMapLoad(event:any){
-    
+  
+  // heatmap
+  onMapLoad(mapInstance: google.maps.Map){
+      this.map = mapInstance;
+      
+      //  const coords = [
+      //   new google.maps.LatLng(21.027189, 105.834081),
+      //   new google.maps.LatLng(21.027130, 105.834089),
+      //   new google.maps.LatLng(21.027074, 105.834100),
+      //   new google.maps.LatLng(21.027014, 105.834111),
+      //   new google.maps.LatLng(21.026969, 105.834132),
+      //   new google.maps.LatLng(21.026924, 105.834148),
+      //   new google.maps.LatLng(21.026874, 105.834186),
+      //   new google.maps.LatLng(21.026834, 105.834234),
+      //   new google.maps.LatLng(21.026794, 105.834282)
+      // ]
+      this.heatmap = new google.maps.visualization.HeatmapLayer({
+        map: this.map,
+        // data: coords,
+        data: this.getPoints()
+      });
   }
+
+  getPoints(){
+    const coords = [
+      {lat: 21.027189, lng: 105.834081},
+      {lat: 21.027130, lng: 105.834089},
+      {lat: 21.027074, lng: 105.834100},
+      {lat: 21.027014, lng: 105.834111},
+      {lat: 21.026969, lng: 105.834132},
+      {lat: 21.026924, lng: 105.834148},
+      {lat: 21.026874, lng: 105.834186},
+      {lat: 21.026834, lng: 105.834234},
+      {lat: 21.026794, lng: 105.834282},
+      {lat: 21.026743, lng: 105.834318},
+      {lat: 21.026698, lng: 105.834366},
+      {lat: 21.026643, lng: 105.834409},
+      {lat: 21.026603, lng: 105.834462},
+      {lat: 21.026723, lng: 105.835139},
+      
+    ];
+    return coords.map((point:any) => 
+      new google.maps.LatLng(point.lat, point.lng));
+  }
+
+
+  // search
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
 
   constructor(
     private http: HttpClient,
     private ngZone: NgZone,
-    private mapsAPILoader: MapsAPILoader
+    private mapsAPILoader: MapsAPILoader,
+    
   ) {}
 
   ngOnInit(): void {

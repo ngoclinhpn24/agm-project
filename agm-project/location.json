@@ -489,11 +489,18 @@
       "id": 526
     },
     {
-      "address": "Los Angeles, California, Hoa Kỳ",
-      "lat": 34.0522342,
-      "lng": -118.2436849,
+      "address": "Hoàng Cầu, Ô Chợ Dừa, Đống Đa, Hà Nội, Việt Nam",
+      "lat": 21.0164931,
+      "lng": 105.822814,
       "radius": 200,
-      "id": 528
+      "id": 530
+    },
+    {
+      "address": "Hamburg, Đức",
+      "lat": 53.5510846,
+      "lng": 9.9936818,
+      "radius": 200,
+      "id": 531
     }
   ]
 }
