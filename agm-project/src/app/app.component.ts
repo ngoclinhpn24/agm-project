@@ -52,18 +52,6 @@ export class AppComponent implements OnInit {
   // heatmap
   onMapLoad(mapInstance: google.maps.Map){
       this.map = mapInstance;
-      
-      //  const coords = [
-      //   new google.maps.LatLng(21.027189, 105.834081),
-      //   new google.maps.LatLng(21.027130, 105.834089),
-      //   new google.maps.LatLng(21.027074, 105.834100),
-      //   new google.maps.LatLng(21.027014, 105.834111),
-      //   new google.maps.LatLng(21.026969, 105.834132),
-      //   new google.maps.LatLng(21.026924, 105.834148),
-      //   new google.maps.LatLng(21.026874, 105.834186),
-      //   new google.maps.LatLng(21.026834, 105.834234),
-      //   new google.maps.LatLng(21.026794, 105.834282)
-      // ]
       this.heatmap = new google.maps.visualization.HeatmapLayer({
         map: this.map,
         // data: coords,
@@ -93,11 +81,39 @@ export class AppComponent implements OnInit {
       new google.maps.LatLng(point.lat, point.lng));
   }
 
+  clickToggleHeatmap(){
+    this.heatmap.setMap(this.heatmap.getMap() ? null : this.map);
+  }
+  clickChangeGradient(){
+    const gradient = [
+      "rgba(0, 255, 255, 0)",
+      "rgba(0, 255, 255, 1)",
+      "rgba(0, 191, 255, 1)",
+      "rgba(0, 127, 255, 1)",
+      "rgba(0, 63, 255, 1)",
+      "rgba(0, 0, 255, 1)",
+      "rgba(0, 0, 223, 1)",
+      "rgba(0, 0, 191, 1)",
+      "rgba(0, 0, 159, 1)",
+      "rgba(0, 0, 127, 1)",
+      "rgba(63, 0, 91, 1)",
+      "rgba(127, 0, 63, 1)",
+      "rgba(191, 0, 31, 1)",
+      "rgba(255, 0, 0, 1)",
+    ];
+    this.heatmap.set("gradient",this.heatmap.get("gradient") ? null : gradient);
+  }
+  clickChangeRadius(){
+    this.heatmap.set("radius", this.heatmap.get("radius") ? null : 30);
+  }
+  clickChangeOpacity(){
+    this.heatmap.set("opacity", this.heatmap.get("opacity") ? null : 5);
+  }
 
   // search
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
-
+  // public toggleHeatmapElementRef: ElementRef | any;
   constructor(
     private http: HttpClient,
     private ngZone: NgZone,

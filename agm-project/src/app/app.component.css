@@ -92,3 +92,28 @@ header {
  /* form input:hover {
     background: #b6b5b8;
  } */
+
+ button{
+     margin-right: 10px;
+     border: 1px solid #999;
+     outline-color: rgb(14, 226, 226);
+     border-radius: 3px;
+ }
+ button:hover{
+    background: #b6b5b8;
+    
+ }
+ #floating-panel {
+    position: absolute;
+    left: 25%;
+    z-index: 5;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    line-height: 30px;
+    padding-left: 10px;
+    
+  }
+  
+  

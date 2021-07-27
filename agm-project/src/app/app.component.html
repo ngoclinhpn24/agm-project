@@ -3,20 +3,29 @@
 </div>
 
 <div class="container">
-  <!-- Search -->
 
+  <!-- Search -->
   <div class="form-group">
     <label i18n="Welcome|This is my page."> Enter address</label>
     <input type="text" name="search" class="form-control" (keydown.enter)="$event.preventDefault()"
-      placeholder="Search Location" autocorrect="off" autocapitalize="off" spellcheck="off" #search />
+      placeholder="Search Location" autocorrect="off" autocapitalize="off" spellcheck="off" 
+      #search />
   </div>
 
+  <!-- heatmap -->
+  <div id="floating-panel">
+    <button id = "toggle-heatmap" (click)="clickToggleHeatmap()">Toggle Heatmap</button>
+    <button id = "change-gradient" (click)="clickChangeGradient()">Change gradient</button>
+    <button id = "change-radius" (click)="clickChangeRadius()">Change radius</button>
+    <button id = "change-opacity" (click)="clickChangeOpacity()">Change opacity</button>
+  </div>
+  <br>
   <!-- Hiển thị bản đồ -->
   <agm-map 
     [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
     (mapClick)="onChoseLocation($event)"
     (mapReady)="onMapLoad($event)">
-
+    <!-- " -->
     <!-- đánh dấu vị trí -->
     <!-- <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"> -->
 

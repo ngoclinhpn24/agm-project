@@ -501,6 +501,13 @@
       "lng": 9.9936818,
       "radius": 200,
       "id": 531
+    },
+    {
+      "address": "Hosur, Tamil Nadu, Ấn Độ",
+      "lat": 12.7409127,
+      "lng": 77.8252923,
+      "radius": 200,
+      "id": 532
     }
   ]
 }
