@@ -522,6 +522,27 @@
       "lng": 8.227511999999999,
       "radius": 200,
       "id": 531
+    },
+    {
+      "address": "Hilversum, Hà Lan",
+      "lat": 52.2291696,
+      "lng": 5.166897400000001,
+      "radius": 200,
+      "id": 532
+    },
+    {
+      "address": "Hannover, Đức",
+      "lat": 52.3758916,
+      "lng": 9.732010400000002,
+      "radius": 200,
+      "id": 533
+    },
+    {
+      "address": "Seattle, Washington, Hoa Kỳ",
+      "lat": 47.6062095,
+      "lng": -122.3320708,
+      "radius": 200,
+      "id": 534
     }
   ]
 }

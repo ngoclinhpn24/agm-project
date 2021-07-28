@@ -173,7 +173,7 @@ export class AppComponent implements OnInit {
     this.http.get(this.url).toPromise().then((data) => {
       // Object data
       console.log(data);
-      // this.dataTable = data; // lấy dữ liệu hiện ra màn hình, dữ liệu chưa xử lý switch case
+      this.dataTable = data; // lấy dữ liệu hiện ra màn hình, dữ liệu chưa xử lý switch case
 
       // marker: đã xử lý tất cả trường thông tin
       let temp: Object[] | any;
