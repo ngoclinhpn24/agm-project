@@ -482,32 +482,46 @@
       "id": 525
     },
     {
-      "address": "Tp. Việt Trì, Phú Thọ, Việt Nam",
-      "lat": 21.3570099,
-      "lng": 105.352633,
+      "address": "Hội Nghĩa, Tx. Tân Uyên, Bình Dương, Việt Nam",
+      "lat": 11.1005706,
+      "lng": 106.767069,
       "radius": 200,
       "id": 526
     },
     {
-      "address": "Hoàng Cầu, Ô Chợ Dừa, Đống Đa, Hà Nội, Việt Nam",
-      "lat": 21.0164931,
-      "lng": 105.822814,
+      "address": "Huelva, Tây Ban Nha",
+      "lat": 37.261421,
+      "lng": -6.9447224,
+      "radius": 200,
+      "id": 527
+    },
+    {
+      "address": "Hyères, Pháp",
+      "lat": 43.120541,
+      "lng": 6.128639,
+      "radius": 200,
+      "id": 528
+    },
+    {
+      "address": "5085 Westheimer Rd, Houston, TX 77056, Hoa Kỳ",
+      "lat": 29.7392039,
+      "lng": -95.4644667,
+      "radius": 200,
+      "id": 529
+    },
+    {
+      "address": "Thun, Thụy Sĩ",
+      "lat": 46.7579868,
+      "lng": 7.6279881,
       "radius": 200,
       "id": 530
     },
     {
-      "address": "Hamburg, Đức",
-      "lat": 53.5510846,
-      "lng": 9.9936818,
+      "address": "Thụy Sĩ",
+      "lat": 46.818188,
+      "lng": 8.227511999999999,
       "radius": 200,
       "id": 531
-    },
-    {
-      "address": "Hosur, Tamil Nadu, Ấn Độ",
-      "lat": 12.7409127,
-      "lng": 77.8252923,
-      "radius": 200,
-      "id": 532
     }
   ]
 }

@@ -150,14 +150,16 @@
         [circleDraggable]="true" 
         [fillColor]="'red'" 
         [editable]="true" 
-        [clickable] = "false"
-        (circleClick)= "onCircleClicked($event)">
+        [clickable] = "true"
+        (circleClick)= "onCircleClicked($event)"
+        >
        
         <agm-info-window 
           [latitude]="searchResult.lat" 
           [longitude]="searchResult.lng" 
           [disableAutoPan]="false"
-          [isOpen]="showInfoWindow" #infoWindow>
+          [isOpen]="showInfoWindow" #infoWindow
+          >
           <form>
             <header>{{ addressSearch }}</header>
             <div class="info">
