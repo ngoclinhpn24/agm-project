@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   dataTable: any;
   circle: any;
   type: any;
+  pathsPolygon:Object[]|any|number;
 
   public geoCoder: any;
 
@@ -34,11 +35,11 @@ export class AppComponent implements OnInit {
 
   showInfoWindow = false;
 
-   private map: any;
-   private heatmap:any;
+  public map: any;
+  public heatmap:any;
   
  
-  // show tooltip
+  // show tooltip Circle
   onCircleClicked(event: any) {
     this.showInfoWindow = !this.showInfoWindow;
   }
@@ -48,7 +49,12 @@ export class AppComponent implements OnInit {
     // this.showInfoWindow = !this.showInfoWindow;
   }
 
-  
+  // show tooltip Polygon
+  onPolyClicked(event:any){
+    // console.log("polyClicked: ", "lat: ", event.latLng.lat(), "lng: ", event.latLng.lng());
+    // this.showInfoWindow = !this.showInfoWindow;
+  }
+ 
   // heatmap
   onMapLoad(mapInstance: google.maps.Map){
       this.map = mapInstance;
@@ -122,16 +128,18 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // load dia diem, search tìm kiếm
 
+    // load dia diem, search tìm kiếm
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation(); // dia diem hien tai
+     
       this.geoCoder = new google.maps.Geocoder();
 
+      // Gợi ý tìm kiếm
       let autocomplete = new google.maps.places.Autocomplete(
         this.searchElementRef.nativeElement
       );
-      // var body;
+      
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
           // lay ket qua dia diem
@@ -147,12 +155,13 @@ export class AppComponent implements OnInit {
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
-          // this.vicinitySearch = place.vicinity;
-          this.zoom = 15;
+        
+          this.zoom = 12;
 
           console.log('address: ', this.addressSearch);
         });
         // console.log("lat: ", this.lat) => ok
+
         var body = {
           address: this.addressSearch,
           lat: this.lat,
@@ -161,6 +170,14 @@ export class AppComponent implements OnInit {
         };
 
         this.searchResult = body;
+
+        // vẽ hình Polygon
+        this.pathsPolygon = [
+          {lat: this.lat, lng: this.lng},
+          {lat: this.lat, lng: this.lng + 0.1},
+          {lat: this.lat + 0.1, lng: this.lng + 0.1},
+          {lat: this.lat + 0.1, lng: this.lng}
+        ]
 
         //HTTP post request // save location to db
         this.http.post<any>(this.url, body).subscribe((data) => {
