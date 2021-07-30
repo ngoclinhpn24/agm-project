@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader } from '@agm/core';
 
@@ -8,7 +8,7 @@ import { MapsAPILoader } from '@agm/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
   title = 'AGM project';
 
   lat: string | any | number;
@@ -55,14 +55,17 @@ export class AppComponent implements OnInit {
     // this.showInfoWindow = !this.showInfoWindow;
   }
  
-  // heatmap
+  // heatmap + draw polygon
   onMapLoad(mapInstance: google.maps.Map){
+
       this.map = mapInstance;
       this.heatmap = new google.maps.visualization.HeatmapLayer({
         map: this.map,
         // data: coords,
         data: this.getPoints()
       });
+
+      this.initDrawingManger(this.map);
   }
 
   getPoints(){
@@ -114,6 +117,39 @@ export class AppComponent implements OnInit {
   }
   clickChangeOpacity(){
     this.heatmap.set("opacity", this.heatmap.get("opacity") ? null : 5);
+  }
+
+  // draw polygon
+  initDrawingManger(map:any){
+    const drawingManager = new google.maps.drawing.DrawingManager(
+      {
+        drawingControl : true,
+        drawingControlOptions: {
+          drawingModes: [
+            google.maps.drawing.OverlayType.POLYGON,
+            google.maps.drawing.OverlayType.POLYLINE,
+          ]
+        },
+        polygonOptions: {
+          draggable: true,
+          // editable: true,
+          strokeColor: 'green',
+          fillOpacity: 0.2,
+          clickable: true,
+          fillColor: 'red'
+        },      
+        polylineOptions: {
+          draggable: true,
+          // editable: true,
+          strokeColor: 'red',
+          clickable: true,
+        }
+      }) 
+
+    drawingManager.setMap(map);
+
+    console.log("polygon: ", drawingManager);
+    
   }
 
   // search

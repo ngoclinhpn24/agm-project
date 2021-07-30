@@ -140,7 +140,7 @@
     </agm-circle> -->
 
     <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) khi search -->
-<!-- 
+
     <div *ngIf="searchResult; then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
       <agm-circle 
@@ -186,9 +186,9 @@
         </agm-info-window>
       </agm-circle>
     </ng-template>
-    <ng-template #elseBlock></ng-template> -->
+    <ng-template #elseBlock></ng-template>
 
-    <div *ngIf="searchResult; then thenBlock; else elseBlock"></div>
+    <!-- <div *ngIf="searchResult; then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
       <agm-polygon
         [paths] = "pathsPolygon"
@@ -199,13 +199,13 @@
         [polyDraggable] = "true"
         (polyClick) = "infoWindow.open()"
         (polyMouseOut) = "infoWindow.close()"
-        > <!-- (polyClick) = "onPolyClicked($event)" -->
+        >  
         
         <agm-info-window 
           [latitude]="searchResult.lat" 
           [longitude]="searchResult.lng" 
           [disableAutoPan]="false"
-          #infoWindow> <!-- [isOpen]="showInfoWindow" -->
+          #infoWindow> 
           
         <form>
           <header>{{ addressSearch }}</header>
@@ -234,11 +234,9 @@
 
       </agm-polygon>
     </ng-template>
-    <ng-template #elseBlock></ng-template>
-    
+    <ng-template #elseBlock></ng-template> -->
     
    
-
   </agm-map>
 
 </div>
