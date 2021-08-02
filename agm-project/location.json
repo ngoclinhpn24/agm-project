@@ -377,6 +377,20 @@
       "lng": 106.6880841,
       "radius": 200,
       "id": 527
+    },
+    {
+      "address": "Tp. Thái Nguyên, Thái Nguyên, Việt Nam",
+      "lat": 21.5671559,
+      "lng": 105.8252038,
+      "radius": 200,
+      "id": 528
+    },
+    {
+      "address": "Thái Hà, Trung Liệt, Đống Đa, Hà Nội, Việt Nam",
+      "lat": 21.0129882,
+      "lng": 105.820014,
+      "radius": 200,
+      "id": 529
     }
   ]
 }

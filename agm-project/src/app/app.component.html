@@ -52,9 +52,9 @@
     </agm-marker> -->
 
     <!-- Đánh dấu + hiển thị tooltip địa chỉ trong location.json -->
-    <!-- <agm-marker *ngFor="let data of marker" [latitude]="data.lat" [longitude]="data.lng" 
+    <agm-marker *ngFor="let data of marker" [latitude]="data.lat" [longitude]="data.lng" 
       [markerDraggable]="true">  
-          <agm-info-window class="infoWindow"> 
+          <!-- <agm-info-window class="infoWindow"> 
               <div class = "infoWindow">
                 <form>
                  <header>{{data.provinceName}}</header> 
@@ -126,8 +126,8 @@
           
                 </form>
               </div>
-          </agm-info-window> 
-    </agm-marker> -->
+          </agm-info-window>  -->
+    </agm-marker>
 
     <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) có sẵn trong location -->
     <!-- <agm-circle *ngFor="let data of circle" 

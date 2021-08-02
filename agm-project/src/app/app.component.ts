@@ -1,6 +1,6 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MapsAPILoader } from '@agm/core';
+import { MapsAPILoader, PolygonManager } from '@agm/core';
 
 
 @Component({
@@ -119,15 +119,14 @@ export class AppComponent implements OnInit{
     this.heatmap.set("opacity", this.heatmap.get("opacity") ? null : 5);
   }
 
-  // draw polygon
+  // draw polygon 
   initDrawingManger(map:any){
-    const drawingManager = new google.maps.drawing.DrawingManager(
-      {
+    const drawingManager = new google.maps.drawing.DrawingManager({
         drawingControl : true,
         drawingControlOptions: {
           drawingModes: [
             google.maps.drawing.OverlayType.POLYGON,
-            google.maps.drawing.OverlayType.POLYLINE,
+            // google.maps.drawing.OverlayType.POLYLINE,
           ]
         },
         polygonOptions: {
@@ -138,24 +137,43 @@ export class AppComponent implements OnInit{
           clickable: true,
           fillColor: 'red'
         },      
-        polylineOptions: {
-          draggable: true,
-          // editable: true,
-          strokeColor: 'red',
-          clickable: true,
-        }
-      }) 
+        // polylineOptions: {
+        //   draggable: true,
+        //   // editable: true,
+        //   strokeColor: 'red',
+        //   clickable: true,
+        // }
+    }) 
 
     drawingManager.setMap(map);
-
-    console.log("polygon: ", drawingManager);
     
+   // console.log("polygon: ", drawingManager);
+  //  Kiểm tra xem 1 điểm có nằm trong polygon không 
+  // google.maps.geometry.poly.containsLocation(somePoint, somePolygon)
+
+    google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon){
+      var marker1 = new google.maps.Marker({
+        position: {
+            lat: 20.937342,
+            lng: 105.790581
+        },
+        map: map
+      });
+      if (polygon.Contains(marker1.getPosition())) {
+        alert('YES');
+      } else {
+        alert('NO');
+     }
+    })
+
+    
+
   }
 
   // search
   @ViewChild('search')
   public searchElementRef: ElementRef | any;
-  // public toggleHeatmapElementRef: ElementRef | any;
+  
   constructor(
     private http: HttpClient,
     private ngZone: NgZone,
@@ -192,7 +210,7 @@ export class AppComponent implements OnInit{
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
         
-          this.zoom = 12;
+          this.zoom = 15;
 
           console.log('address: ', this.addressSearch);
         });
@@ -289,7 +307,11 @@ export class AppComponent implements OnInit{
           ruralName: ruralName,
           locationName: locationName,
         };
+
       });
+
+      console.log("Markers: ", this.marker)
+
 
       // convert lat, lng, radius sang number => circle
       let temp1: Object[] | any;
