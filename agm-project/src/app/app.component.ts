@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MapsAPILoader, PolygonManager } from '@agm/core';
+import { MapsAPILoader } from '@agm/core';
+
 
 
 @Component({
@@ -38,7 +39,29 @@ export class AppComponent implements OnInit{
   public map: any;
   public heatmap:any;
   
- 
+  markerArray = [
+    {
+      lat: 20.4463471,
+      lng: 106.3365828,
+      address: "Thái Bình"
+    },
+    {
+      lat:20.8449115,
+      lng: 106.688084,
+      address: "Hải Phòng"
+    },
+    {
+      lat: 21.063997,
+      lng: 107.258449,
+      address: "Quảng Ninh"
+    },
+    {
+      lat: 20.937342,
+      lng: 105.790581,
+      address: "Hà Nội"
+    }
+  ];
+
   // show tooltip Circle
   onCircleClicked(event: any) {
     this.showInfoWindow = !this.showInfoWindow;
@@ -126,7 +149,7 @@ export class AppComponent implements OnInit{
         drawingControlOptions: {
           drawingModes: [
             google.maps.drawing.OverlayType.POLYGON,
-            // google.maps.drawing.OverlayType.POLYLINE,
+            google.maps.drawing.OverlayType.POLYLINE,
           ]
         },
         polygonOptions: {
@@ -146,28 +169,43 @@ export class AppComponent implements OnInit{
     }) 
 
     drawingManager.setMap(map);
-    
-   // console.log("polygon: ", drawingManager);
+
   //  Kiểm tra xem 1 điểm có nằm trong polygon không 
   // google.maps.geometry.poly.containsLocation(somePoint, somePolygon)
 
     google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon){
-      var marker1 = new google.maps.Marker({
-        position: {
-            lat: 20.937342,
-            lng: 105.790581
-        },
-        map: map
-      });
-      if (polygon.Contains(marker1.getPosition())) {
-        alert('YES');
+     
+      // console.log("paths: ", polygon.getPath().getArray());
+
+      // if (polygon.Contains(marker1.getPosition())) {
+      //   alert('YES');
+      // } else {
+      //   alert('NO');
+      // }
+
+      if(google.maps.geometry.poly.containsLocation(insideLoc, polygon) == true) {
+        alert("Located inside the polygon");
       } else {
-        alert('NO');
-     }
-    })
-
+        alert("NO");
+      }
+    });
+   
+    var insideLoc = new google.maps.LatLng(20.4463471, 106.3365828);
     
-
+    new google.maps.Marker({
+        position: insideLoc,
+        map: map
+        
+    });
+  
+    
+    // var marker1 = new google.maps.Marker({ 
+    //   position: {
+    //     lat: 20.937342,
+    //     lng: 105.790581
+    //   },
+    //   map: map
+    // });
   }
 
   // search
