@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader } from '@agm/core';
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +16,7 @@ export class AppComponent implements OnInit{
   zoom: string | any|number;
 
   public marker: any;
-  dataTable: any;
+  dataTable: Object[]|any;
   circle: any;
   type: any;
   pathsPolygon:Object[]|any|number;
@@ -38,7 +37,11 @@ export class AppComponent implements OnInit{
 
   public map: any;
   public heatmap:any;
-  
+
+  resultPolygon: Object[]|any;
+  result: any[] = []
+
+
   markerArray = [
     {
       lat: 20.4463471,
@@ -46,7 +49,7 @@ export class AppComponent implements OnInit{
       address: "Thái Bình"
     },
     {
-      lat:20.8449115,
+      lat: 20.8449115,
       lng: 106.688084,
       address: "Hải Phòng"
     },
@@ -59,8 +62,39 @@ export class AppComponent implements OnInit{
       lat: 20.937342,
       lng: 105.790581,
       address: "Hà Nội"
+    }, 
+    {
+      lat: 19.165924,
+      lng: 104.912357,
+      address: "Nghệ An"
+    }, 
+    {
+      lat: 20.654400,
+      lng: 106.057312,
+      address: "Hưng Yên"
+    }, 
+    {
+      lat: 21.561377,
+      lng: 105.876007,
+      address: "Thái Nguyên"
+    },
+    {
+      lat: 16.130262,
+      lng: 107.600034,
+      address: "Huế"
+    }, 
+    {
+      lat: 21.3269024,
+      lng: 103.9143869,
+      address: "Sơn La"
+    },
+    {
+      lat: 18.3559537,
+      lng: 105.8877494,
+      address: "Hà Tĩnh"
     }
   ];
+ 
 
   // show tooltip Circle
   onCircleClicked(event: any) {
@@ -84,11 +118,10 @@ export class AppComponent implements OnInit{
       this.map = mapInstance;
       this.heatmap = new google.maps.visualization.HeatmapLayer({
         map: this.map,
-        // data: coords,
         data: this.getPoints()
       });
 
-      this.initDrawingManger(this.map);
+      this.initDrawingManager(this.map);
   }
 
   getPoints(){
@@ -143,7 +176,7 @@ export class AppComponent implements OnInit{
   }
 
   // draw polygon 
-  initDrawingManger(map:any){
+  initDrawingManager(map:any){
     const drawingManager = new google.maps.drawing.DrawingManager({
         drawingControl : true,
         drawingControlOptions: {
@@ -160,57 +193,40 @@ export class AppComponent implements OnInit{
           clickable: true,
           fillColor: 'red'
         },      
-        // polylineOptions: {
-        //   draggable: true,
-        //   // editable: true,
-        //   strokeColor: 'red',
-        //   clickable: true,
-        // }
+  
     }) 
 
     drawingManager.setMap(map);
 
   //  Kiểm tra xem 1 điểm có nằm trong polygon không 
-  // google.maps.geometry.poly.containsLocation(somePoint, somePolygon)
 
+    var temp = this.markerArray
+
+    console.log(temp , " ===> before ")
     google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon){
-     
-      // console.log("paths: ", polygon.getPath().getArray());
+      // let result: Array<any>=[]
+     var result: any[] = []
+      // console.log(temp, result, "temp data table")
 
-      // if (polygon.Contains(marker1.getPosition())) {
-      //   alert('YES');
-      // } else {
-      //   alert('NO');
-      // }
-
-      if(google.maps.geometry.poly.containsLocation(insideLoc, polygon) == true) {
-        alert("Located inside the polygon");
-      } else {
-        alert("NO");
-      }
+      temp?.map((loca:any) => {
+          var insideLoc = new google.maps.LatLng(loca.lat , loca.lng );
+          
+          if(google.maps.geometry.poly.containsLocation(insideLoc, polygon) == true) {
+            result.push({
+              lat: parseFloat(loca.lat),
+              lng: parseFloat(loca.lng),
+              address: loca.address
+            })
+          }
+      })
+      
+      console.log("Kết quả : ", result, temp, "---> after polygon complete")
     });
-   
-    var insideLoc = new google.maps.LatLng(20.4463471, 106.3365828);
-    
-    new google.maps.Marker({
-        position: insideLoc,
-        map: map
-        
-    });
-  
-    
-    // var marker1 = new google.maps.Marker({ 
-    //   position: {
-    //     lat: 20.937342,
-    //     lng: 105.790581
-    //   },
-    //   map: map
-    // });
+    // return this.resultPolygon = this.result
   }
 
   // search
-  @ViewChild('search')
-  public searchElementRef: ElementRef | any;
+  @ViewChild('search') public searchElementRef: ElementRef | any;
   
   constructor(
     private http: HttpClient,
@@ -220,7 +236,7 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-
+    
     // load dia diem, search tìm kiếm
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation(); // dia diem hien tai
@@ -277,7 +293,7 @@ export class AppComponent implements OnInit{
         });
       });
     });
-
+    
     // this.http.get(this.url).subscribe((data) => {
     this.http.get(this.url).toPromise().then((data) => {
       // Object data
@@ -347,8 +363,6 @@ export class AppComponent implements OnInit{
         };
 
       });
-
-      console.log("Markers: ", this.marker)
 
 
       // convert lat, lng, radius sang number => circle

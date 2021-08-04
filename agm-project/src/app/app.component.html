@@ -25,7 +25,7 @@
     [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
     (mapClick)="onChoseLocation($event)"
     (mapReady)="onMapLoad($event)">
-    <!-- " -->
+   
     <!-- đánh dấu vị trí -->
     <!-- <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"> -->
 
@@ -203,7 +203,7 @@
         
         <agm-info-window 
           [latitude]="searchResult.lat" 
-          [longitude]="searchResult.lng" 
+          [longitude]="searchResult.lng"
           [disableAutoPan]="false"
           #infoWindow> 
           
@@ -235,8 +235,7 @@
       </agm-polygon>
     </ng-template>
     <ng-template #elseBlock></ng-template> -->
-    
-   
+  
   </agm-map>
 
 </div>
@@ -279,3 +278,21 @@
     </tbody>
   </table>
 </div>
+
+<!-- <div class="tableData">
+  <table>
+    <thead>
+      <th>Address</th>
+      <th>Lat</th>
+      <th>Lng</th>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let data of resultPolygon">
+        <td>{{ data.address }}</td>
+        <td>{{ data.lat }}</td>
+        <td>{{ data.lng }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->

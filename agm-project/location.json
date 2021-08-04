@@ -351,13 +351,6 @@
       "id": 499
     },
     {
-      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
-      "lat": 20.4463471,
-      "lng": 106.3365828,
-      "radius": 1200,
-      "id": 519
-    },
-    {
       "address": "Köln, Đức",
       "lat": 50.937531,
       "lng": 6.9602786,
@@ -391,6 +384,34 @@
       "lng": 105.820014,
       "radius": 200,
       "id": 529
+    },
+    {
+      "address": "Tp. Sơn La, Sơn La, Việt Nam",
+      "lat": 21.3269024,
+      "lng": 103.9143869,
+      "radius": 200,
+      "id": 530
+    },
+    {
+      "address": "Tp. Vinh, Nghệ An, Việt Nam",
+      "lat": 18.6795848,
+      "lng": 105.6813333,
+      "radius": 200,
+      "id": 531
+    },
+    {
+      "address": "Tp. Hà Tĩnh, Hà Tĩnh, Việt Nam",
+      "lat": 18.3559537,
+      "lng": 105.8877494,
+      "radius": 200,
+      "id": 532
+    },
+    {
+      "address": "3612 Tienhoven, Hà Lan",
+      "lat": 52.1667429,
+      "lng": 5.082587,
+      "radius": 200,
+      "id": 533
     }
   ]
 }
