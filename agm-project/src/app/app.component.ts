@@ -42,58 +42,58 @@ export class AppComponent implements OnInit{
   
 
 
-  markerArray = [
-    {
-      lat: 20.4463471,
-      lng: 106.3365828,
-      address: "Thái Bình"
-    },
-    {
-      lat: 20.8449115,
-      lng: 106.688084,
-      address: "Hải Phòng"
-    },
-    {
-      lat: 21.063997,
-      lng: 107.258449,
-      address: "Quảng Ninh"
-    },
-    {
-      lat: 20.937342,
-      lng: 105.790581,
-      address: "Hà Nội"
-    }, 
-    {
-      lat: 19.165924,
-      lng: 104.912357,
-      address: "Nghệ An"
-    }, 
-    {
-      lat: 20.654400,
-      lng: 106.057312,
-      address: "Hưng Yên"
-    }, 
-    {
-      lat: 21.561377,
-      lng: 105.876007,
-      address: "Thái Nguyên"
-    },
-    {
-      lat: 16.130262,
-      lng: 107.600034,
-      address: "Huế"
-    }, 
-    {
-      lat: 21.3269024,
-      lng: 103.9143869,
-      address: "Sơn La"
-    },
-    {
-      lat: 18.3559537,
-      lng: 105.8877494,
-      address: "Hà Tĩnh"
-    }
-  ];
+  // markerArray = [
+  //   {
+  //     lat: 20.4463471,
+  //     lng: 106.3365828,
+  //     address: "Thái Bình"
+  //   },
+  //   {
+  //     lat: 20.8449115,
+  //     lng: 106.688084,
+  //     address: "Hải Phòng"
+  //   },
+  //   {
+  //     lat: 21.063997,
+  //     lng: 107.258449,
+  //     address: "Quảng Ninh"
+  //   },
+  //   {
+  //     lat: 20.937342,
+  //     lng: 105.790581,
+  //     address: "Hà Nội"
+  //   }, 
+  //   {
+  //     lat: 19.165924,
+  //     lng: 104.912357,
+  //     address: "Nghệ An"
+  //   }, 
+  //   {
+  //     lat: 20.654400,
+  //     lng: 106.057312,
+  //     address: "Hưng Yên"
+  //   }, 
+  //   {
+  //     lat: 21.561377,
+  //     lng: 105.876007,
+  //     address: "Thái Nguyên"
+  //   },
+  //   {
+  //     lat: 16.130262,
+  //     lng: 107.600034,
+  //     address: "Huế"
+  //   }, 
+  //   {
+  //     lat: 21.3269024,
+  //     lng: 103.9143869,
+  //     address: "Sơn La"
+  //   },
+  //   {
+  //     lat: 18.3559537,
+  //     lng: 105.8877494,
+  //     address: "Hà Tĩnh"
+  //   }
+  // ];
  
 
   // show tooltip Circle
@@ -200,13 +200,14 @@ export class AppComponent implements OnInit{
 
   //  Kiểm tra xem 1 điểm có nằm trong polygon không 
 
-    var temp = this.markerArray
 
+    let instan =  this;
+    var temp = this.marker
+    console.log("instan: ", instan)
     console.log(temp , " ===> before ")
     google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon){
       // let result: Array<any>=[]
-     var result: any[] = []
-      // console.log(temp, result, "temp data table")
+      var result: any[] = []
 
       temp?.map((loca:any) => {
           var insideLoc = new google.maps.LatLng(loca.lat , loca.lng );
@@ -219,10 +220,11 @@ export class AppComponent implements OnInit{
             })
           }
       })
-      
+      let abcPoly = instan.dataTable.push(result);
+      console.log("abcgd: ", abcPoly)
       console.log("Kết quả : ", result, temp, "---> after polygon complete")
     });
-    // return this.resultPolygon = this.result
+   
   }
 
   // search

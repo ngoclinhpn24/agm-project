@@ -349,69 +349,6 @@
       "locationName": "T280001021",
       "concaveSameLocationAndConcaveType2g": "2G_HONGVL1",
       "id": 499
-    },
-    {
-      "address": "Köln, Đức",
-      "lat": 50.937531,
-      "lng": 6.9602786,
-      "radius": 200,
-      "id": 525
-    },
-    {
-      "address": "Husum, Đức",
-      "lat": 54.4837642,
-      "lng": 9.060062799999999,
-      "radius": 200,
-      "id": 526
-    },
-    {
-      "address": "Hải Phòng, Việt Nam",
-      "lat": 20.8449115,
-      "lng": 106.6880841,
-      "radius": 200,
-      "id": 527
-    },
-    {
-      "address": "Tp. Thái Nguyên, Thái Nguyên, Việt Nam",
-      "lat": 21.5671559,
-      "lng": 105.8252038,
-      "radius": 200,
-      "id": 528
-    },
-    {
-      "address": "Thái Hà, Trung Liệt, Đống Đa, Hà Nội, Việt Nam",
-      "lat": 21.0129882,
-      "lng": 105.820014,
-      "radius": 200,
-      "id": 529
-    },
-    {
-      "address": "Tp. Sơn La, Sơn La, Việt Nam",
-      "lat": 21.3269024,
-      "lng": 103.9143869,
-      "radius": 200,
-      "id": 530
-    },
-    {
-      "address": "Tp. Vinh, Nghệ An, Việt Nam",
-      "lat": 18.6795848,
-      "lng": 105.6813333,
-      "radius": 200,
-      "id": 531
-    },
-    {
-      "address": "Tp. Hà Tĩnh, Hà Tĩnh, Việt Nam",
-      "lat": 18.3559537,
-      "lng": 105.8877494,
-      "radius": 200,
-      "id": 532
-    },
-    {
-      "address": "3612 Tienhoven, Hà Lan",
-      "lat": 52.1667429,
-      "lng": 5.082587,
-      "radius": 200,
-      "id": 533
     }
   ]
 }
