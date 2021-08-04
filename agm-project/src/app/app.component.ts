@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
   public heatmap:any;
 
   resultPolygon: Object[]|any;
-  result: any[] = []
+  
 
 
   markerArray = [
@@ -108,7 +108,7 @@ export class AppComponent implements OnInit{
 
   // show tooltip Polygon
   onPolyClicked(event:any){
-    // console.log("polyClicked: ", "lat: ", event.latLng.lat(), "lng: ", event.latLng.lng());
+    
     // this.showInfoWindow = !this.showInfoWindow;
   }
  
