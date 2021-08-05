@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 
 import { AgmCoreModule } from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    UserloginComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,8 @@ export class AppComponent implements OnInit{
 
   public marker: any;
   dataTable: Object[]|any;
+  pushTable: Object[]|any;
+
   circle: any;
   type: any;
   pathsPolygon:Object[]|any|number;
@@ -37,63 +39,60 @@ export class AppComponent implements OnInit{
 
   public map: any;
   public heatmap:any;
-
-  resultPolygon: Object[]|any;
   
 
-
-  // markerArray = [
-  //   {
-  //     lat: 20.4463471,
-  //     lng: 106.3365828,
-  //     address: "Thái Bình"
-  //   },
-  //   {
-  //     lat: 20.8449115,
-  //     lng: 106.688084,
-  //     address: "Hải Phòng"
-  //   },
-  //   {
-  //     lat: 21.063997,
-  //     lng: 107.258449,
-  //     address: "Quảng Ninh"
-  //   },
-  //   {
-  //     lat: 20.937342,
-  //     lng: 105.790581,
-  //     address: "Hà Nội"
-  //   }, 
-  //   {
-  //     lat: 19.165924,
-  //     lng: 104.912357,
-  //     address: "Nghệ An"
-  //   }, 
-  //   {
-  //     lat: 20.654400,
-  //     lng: 106.057312,
-  //     address: "Hưng Yên"
-  //   }, 
-  //   {
-  //     lat: 21.561377,
-  //     lng: 105.876007,
-  //     address: "Thái Nguyên"
-  //   },
-  //   {
-  //     lat: 16.130262,
-  //     lng: 107.600034,
-  //     address: "Huế"
-  //   }, 
-  //   {
-  //     lat: 21.3269024,
-  //     lng: 103.9143869,
-  //     address: "Sơn La"
-  //   },
-  //   {
-  //     lat: 18.3559537,
-  //     lng: 105.8877494,
-  //     address: "Hà Tĩnh"
-  //   }
-  // ];
+  markerArray = [
+    {
+      lat: 20.4463471,
+      lng: 106.3365828,
+      address: "Thái Bình"
+    },
+    {
+      lat: 20.8449115,
+      lng: 106.688084,
+      address: "Hải Phòng"
+    },
+    {
+      lat: 21.063997,
+      lng: 107.258449,
+      address: "Quảng Ninh"
+    },
+    {
+      lat: 20.937342,
+      lng: 105.790581,
+      address: "Hà Nội"
+    }, 
+    {
+      lat: 19.165924,
+      lng: 104.912357,
+      address: "Nghệ An"
+    }, 
+    {
+      lat: 20.654400,
+      lng: 106.057312,
+      address: "Hưng Yên"
+    }, 
+    {
+      lat: 21.561377,
+      lng: 105.876007,
+      address: "Thái Nguyên"
+    },
+    {
+      lat: 16.130262,
+      lng: 107.600034,
+      address: "Huế"
+    }, 
+    {
+      lat: 21.3269024,
+      lng: 103.9143869,
+      address: "Sơn La"
+    },
+    {
+      lat: 18.3559537,
+      lng: 105.8877494,
+      address: "Hà Tĩnh"
+    }
+  ];
  
 
   // show tooltip Circle
@@ -200,29 +199,36 @@ export class AppComponent implements OnInit{
 
   //  Kiểm tra xem 1 điểm có nằm trong polygon không 
 
-
     let instan =  this;
-    var temp = this.marker
-    console.log("instan: ", instan)
-    console.log(temp , " ===> before ")
+    var temp = this.markerArray;
+    console.log("instan: ", instan);
+
     google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon){
-      // let result: Array<any>=[]
-      var result: any[] = []
+      // let result: Array<any>=[] 
+      var result: any | any[] = [];
 
       temp?.map((loca:any) => {
-          var insideLoc = new google.maps.LatLng(loca.lat , loca.lng );
+          var insideLoc = new google.maps.LatLng(loca.lat, loca.lng);
           
           if(google.maps.geometry.poly.containsLocation(insideLoc, polygon) == true) {
             result.push({
+              address: loca.address,
               lat: parseFloat(loca.lat),
               lng: parseFloat(loca.lng),
-              address: loca.address
             })
           }
       })
-      let abcPoly = instan.dataTable.push(result);
-      console.log("abcgd: ", abcPoly)
-      console.log("Kết quả : ", result, temp, "---> after polygon complete")
+    
+      result.map((add: any) => {
+        instan.dataTable.push({
+          address: add.address,
+          lat: add.lat,
+          lng: add.lng        
+        });
+      });
+
+      console.log("New table: ", instan.dataTable)
+      // console.log("Kết quả : ", result, temp, "---> after polygon complete")
     });
    
   }
@@ -300,8 +306,9 @@ export class AppComponent implements OnInit{
     this.http.get(this.url).toPromise().then((data) => {
       // Object data
       console.log(data);
+      
       this.dataTable = data; // lấy dữ liệu hiện ra màn hình, dữ liệu chưa xử lý switch case
-
+      
       // marker: đã xử lý tất cả trường thông tin
       let temp: Object[] | any;
       temp = data;
