@@ -1,1 +1,74 @@
-<p>mainpage works!</p>
+ <div class="container">
+    <!-- Search -->
+    <div class="form-group">
+        <label i18n="Welcome|This is my page."> Enter address</label>
+        <input type="text" name="search" class="form-control" (keydown.enter)="$event.preventDefault()"
+        placeholder="Search Location" autocorrect="off" autocapitalize="off" spellcheck="off" 
+        #search />
+    </div>
+    
+    <!-- Map -->
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" >
+        <!-- đánh dấu vị trí -->
+        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true">
+        </agm-marker>
+
+        <!-- Hiện radius khi tìm kiếm  -->
+        <div *ngIf="searchResult; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+            <agm-circle 
+                [latitude]="searchResult.lat" 
+                [longitude]="searchResult.lng" 
+                [radius]="searchResult.radius"
+                [circleDraggable]="true" 
+                [fillColor]="'red'" 
+                [editable]="true" 
+                [clickable] = "true"
+                (circleClick)= "onCircleClicked($event)">
+        
+                <agm-info-window 
+                    [latitude]="searchResult.lat" 
+                    [longitude]="searchResult.lng" 
+                    [disableAutoPan]="false"
+                    [isOpen]="showInfoWindow" #infoWindow>
+                        <form>
+                            <header>{{ addressSearch }}</header>
+                            <div class="info">
+                            <div class="left"><label for="addressSearch">Address</label></div>
+                            <div class="right">
+                                <input type="text" class="form-control" name="lat" value="{{ addressSearch }}" readonly />
+                            </div>
+                            </div>
+
+                            <div class="info">
+                            <div class="left"><label for="lat">Lat</label></div>
+                            <div class="right">
+                                <input type="text" class="form-control" name="lat" value="{{ lat }}" readonly />
+                            </div>
+                            </div>
+
+                            <div class="info">
+                            <div class="left"><label for="lng">Lng</label></div>
+                            <div class="right">
+                                <input type="text" class="form-control" name="lng" value="{{ lng }}" readonly />
+                            </div>
+                            </div>
+                        </form>
+                </agm-info-window>
+            </agm-circle>
+        </ng-template>
+        <ng-template #elseBlock></ng-template>
+
+        <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) có sẵn trong location -->
+        <agm-circle *ngFor="let data of circle" 
+                [latitude] = "data.lat"
+                [longitude] = "data.lng"
+                [radius] = "data.radius"
+                [circleDraggable] = "true"
+                [editable] = "true"
+                [fillColor] = "'red'"
+                [clickable] = "true">
+        </agm-circle>
+
+    </agm-map>
+</div>

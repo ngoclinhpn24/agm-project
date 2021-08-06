@@ -349,6 +349,41 @@
       "locationName": "T280001021",
       "concaveSameLocationAndConcaveType2g": "2G_HONGVL1",
       "id": 499
+    },
+    {
+      "address": "Huy, Bỉ",
+      "lat": 50.5187153,
+      "lng": 5.239665599999999,
+      "radius": 200,
+      "id": 502
+    },
+    {
+      "address": "Hà Nội, Việt Nam",
+      "lat": 21.0031177,
+      "lng": 105.8201408,
+      "radius": 200,
+      "id": 503
+    },
+    {
+      "address": "Fethiye, Muğla, Thổ Nhĩ Kỳ",
+      "lat": 36.659246,
+      "lng": 29.126347,
+      "radius": 500,
+      "id": 504
+    },
+    {
+      "address": "Hà Nam, Việt Nam",
+      "lat": 20.5835196,
+      "lng": 105.92299,
+      "radius": 500,
+      "id": 505
+    },
+    {
+      "address": "Hồ Chí Minh, Thành phố Hồ Chí Minh, Việt Nam",
+      "lat": 10.8230989,
+      "lng": 106.6296638,
+      "radius": 500,
+      "id": 506
     }
   ]
 }

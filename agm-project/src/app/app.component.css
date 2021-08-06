@@ -1,6 +1,5 @@
 .container, .tableData{
-    padding: 20px;
-    
+    padding: 20px;  
 }
 agm-map{
     height: 450px;
@@ -14,13 +13,8 @@ table, th, td {
 th, td {
     padding: 15px;
 }
-
-/* .infoWindow{
-    width: 270px;
-    margin : 0 auto;
-}  */
   
- form {
+form {
     margin: 3px;
     /* position: relative; */
     /* background: #f3f3f3; */
@@ -113,7 +107,6 @@ header {
     text-align: center;
     line-height: 30px;
     padding-left: 10px;
-    
-  }
+}
   
   

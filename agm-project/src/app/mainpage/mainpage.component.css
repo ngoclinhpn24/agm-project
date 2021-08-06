@@ -1,0 +1,59 @@
+.container{
+    padding: 20px;  
+}
+agm-map{
+    height: 450px;
+}
+
+form {
+    margin: 3px;
+    background: #f5f4f4;
+    width: 261px; 
+    color: #333;
+    border-radius: 10px;
+    border: 0.5px solid rgb(187, 186, 186);
+}
+
+header {
+    background: #0b6952;
+    color: white; 
+    padding: 20px 20px;     
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500; 
+    border-radius: 10px 10px 0 0;
+}
+
+form label {
+    margin-left: 7px;
+    margin-top: 8px; 
+    margin-bottom: 5px;
+}
+  
+form input {
+    height: 28px;
+    font-size: small;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 7px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline-color: #289672;
+} 
+
+
+.info{
+    display:flex;
+}
+
+.left{ 
+    display:flex; 
+    flex:1; 
+}
+
+.right{
+    display:flex; 
+    flex:2; 
+}  

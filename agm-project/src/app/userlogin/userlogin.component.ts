@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-userlogin',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserloginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  clickButton(){
+    alert("Login Successful");
+    this.router.navigate(['app-mainpage'])
+  }
 
   ngOnInit(): void {
   }
