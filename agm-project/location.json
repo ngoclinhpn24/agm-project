@@ -384,6 +384,34 @@
       "lng": 106.6296638,
       "radius": 500,
       "id": 506
+    },
+    {
+      "address": "Granada, Tây Ban Nha",
+      "lat": 37.1773363,
+      "lng": -3.5985571,
+      "radius": 500,
+      "id": 509
+    },
+    {
+      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
+      "lat": 20.4463471,
+      "lng": 106.3365828,
+      "radius": 500,
+      "id": 510
+    },
+    {
+      "address": "Frankfurt am Main, Đức",
+      "lat": 50.1109221,
+      "lng": 8.6821267,
+      "radius": 500,
+      "id": 511
+    },
+    {
+      "address": "Hồ Chí Minh, Thành phố Hồ Chí Minh, Việt Nam",
+      "lat": 10.8230989,
+      "lng": 106.6296638,
+      "radius": 500,
+      "id": 512
     }
   ]
 }

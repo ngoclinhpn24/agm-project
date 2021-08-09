@@ -172,7 +172,7 @@ export class AppComponent implements OnInit{
     this.heatmap.set("opacity", this.heatmap.get("opacity") ? null : 5);
   }
 
-  // draw polygon 
+  // draw polygon + kiểm tra các điểm nằm trong polygon
   initDrawingManager(map:any){
     const drawingManager = new google.maps.drawing.DrawingManager({
         drawingControl : true,

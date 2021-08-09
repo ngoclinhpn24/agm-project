@@ -21,6 +21,7 @@ export class MainpageComponent implements OnInit {
 
   public geoCoder: any;
   public map: any;
+  markerLatLng: any;
 
   public searchResult: any;
   addressSearch: string | any;
@@ -56,7 +57,6 @@ export class MainpageComponent implements OnInit {
           // lay ket qua dia diem
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          console.log('Place:', place);
           // xac minh ket qua
           if (place.geometry === undefined || place.geometry === null) {
             return;
@@ -70,7 +70,17 @@ export class MainpageComponent implements OnInit {
           this.zoom = 15;
 
           console.log('address: ', this.addressSearch);
-        });
+
+          // tọa độ lat, lng
+          let _coordi = place.geometry?.location;
+          console.log('Place:', place);
+        
+          // tính khoảng cách 
+          // var _kcod = new google.maps.LatLng(21.0031177, 105.8201408);
+          // var distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(_kcod, _coordi);
+          // console.log("-----> distance", distanceInKm);
+
+        })
     
         var body = {
           address: this.addressSearch,
@@ -86,13 +96,21 @@ export class MainpageComponent implements OnInit {
           //this.postData = data;
         });
 
+        console.log("Body", body)
+        var searchLoc = new google.maps.LatLng(body.lat, body.lng)
+        console.log("InsideLoc", searchLoc);
+
+        // Tính khoảng cách
+        var _kcoordi= new google.maps.LatLng(21.0031177, 105.8201408);
+        var distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(_kcoordi, searchLoc);
+        console.log("-----> distance", distanceInKm);
       });
+
+      
     });
 
     // lấy data file json
     this.http.get(this.url).toPromise().then((data) => {
-
-  
         // marker: đã xử lý tất cả trường thông tin
         let temp: Object[] | any;
         temp = data;
@@ -156,7 +174,7 @@ export class MainpageComponent implements OnInit {
           };
   
         });
-  
+
         // convert lat, lng, radius sang number => circle
         let temp1: Object[] | any;
         temp1 = data;
@@ -172,7 +190,23 @@ export class MainpageComponent implements OnInit {
             radius: radius,
           };
         });
-        console.log('Lat Lng Radius: number: ', this.circle);
+        
+        // console.log('Lat Lng Radius: number: ', this.circle);
+
+        // Lay lat, lng => tính khoảng cách
+        let temp2: Object[] | any;
+        temp2 = data;
+        
+        this.markerLatLng= temp2.map((location: any) => {
+          var lat: number = +location.lat; 
+          var lng: number = +location.lng;
+          return {
+            lat: lat,
+            lng: lng,
+          };
+        });
+        console.log('Lat Lng: number: ', this.markerLatLng);
+
     });
 
   }
