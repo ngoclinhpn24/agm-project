@@ -59,16 +59,12 @@
         </ng-template>
         <ng-template #elseBlock></ng-template>
 
-        <!-- Hiện hình tròn với bán kinh radius, trọng tâm (lat, lng) có sẵn trong location -->
-        <!-- <agm-circle *ngFor="let data of circle" 
-                [latitude] = "data.lat"
-                [longitude] = "data.lng"
-                [radius] = "data.radius"
-                [circleDraggable] = "true"
-                [editable] = "true"
-                [fillColor] = "'red'"
-                [clickable] = "true">
-        </agm-circle> -->
+
+        <agm-marker *ngFor="let data of markerInsideRadius" 
+            [latitude]="data.lat" 
+            [longitude]="data.lng" 
+            [markerDraggable]="true">
+        </agm-marker>
 
     </agm-map>
 </div>

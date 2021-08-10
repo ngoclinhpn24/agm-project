@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { MapsAPILoader } from '@agm/core';
+
+declare let google: any;
 
 @Component({
   selector: 'app-mainpage',
@@ -22,8 +24,10 @@ export class MainpageComponent implements OnInit {
   public geoCoder: any;
   public map: any;
   markerLatLng: any;
+  markerInsideRadius: any | any[] = []; // mang chua các điểm thỏa mãn nằm trong bán kinh ? km
 
   public searchResult: any;
+  
   addressSearch: string | any;
 
   url = 'http://localhost:3000/data';
@@ -67,19 +71,13 @@ export class MainpageComponent implements OnInit {
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
         
-          this.zoom = 15;
+          this.zoom = 10;
 
           console.log('address: ', this.addressSearch);
 
           // tọa độ lat, lng
           let _coordi = place.geometry?.location;
           console.log('Place:', place);
-        
-          // tính khoảng cách 
-          // var _kcod = new google.maps.LatLng(21.0031177, 105.8201408);
-          // var distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(_kcod, _coordi);
-          // console.log("-----> distance", distanceInKm);
-
         })
     
         var body = {
@@ -96,20 +94,38 @@ export class MainpageComponent implements OnInit {
           //this.postData = data;
         });
 
-        console.log("Body", body)
+        console.log("Body: ", body)
+
         var searchLoc = new google.maps.LatLng(body.lat, body.lng)
-        console.log("InsideLoc", searchLoc);
+        console.log("searchLoc: ", searchLoc);
 
         // Tính khoảng cách
-        var _kcoordi= new google.maps.LatLng(21.0031177, 105.8201408);
-        var distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(_kcoordi, searchLoc);
-        console.log("-----> distance", distanceInKm);
-      });
+        // var _kcoordi= new google.maps.LatLng(21.0031177, 105.8201408);
+        // var distanceInM = google.maps.geometry.spherical.computeDistanceBetween(_kcoordi, searchLoc);
+        // console.log("-----> distance", distanceInM);
+        
+        let temp3 = this.markerLatLng;
+        
+        console.log("Temp 3: ", temp3)
+    
+        // Dùng Filter để lọc, xóa những địa điểm không phù hợp luôn 
+        this.markerInsideRadius = temp3.filter((loc: any) => {
+          var markerLoc = new google.maps.LatLng(loc.lat, loc.lng);
+          const distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(markerLoc, searchLoc)/1000;
+          console.log(" ----> Km: ", distanceInKm);
 
-      
+          if(distanceInKm < 10.0){
+            return loc;
+          }
+        });
+        console.log('Result Inside Radius: ', this.markerInsideRadius);
+
+      });
     });
 
-    // lấy data file json
+
+    // lấy data file json 
+    // this.http.get(this.url, {params: params} ).subscribe((data) => 
     this.http.get(this.url).toPromise().then((data) => {
         // marker: đã xử lý tất cả trường thông tin
         let temp: Object[] | any;
@@ -191,12 +207,11 @@ export class MainpageComponent implements OnInit {
           };
         });
         
-        // console.log('Lat Lng Radius: number: ', this.circle);
-
+        
         // Lay lat, lng => tính khoảng cách
         let temp2: Object[] | any;
         temp2 = data;
-        
+    
         this.markerLatLng= temp2.map((location: any) => {
           var lat: number = +location.lat; 
           var lng: number = +location.lng;
@@ -206,7 +221,7 @@ export class MainpageComponent implements OnInit {
           };
         });
         console.log('Lat Lng: number: ', this.markerLatLng);
-
+              
     });
 
   }
