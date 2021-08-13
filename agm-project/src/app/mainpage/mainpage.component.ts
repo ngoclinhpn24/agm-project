@@ -1,8 +1,8 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { MapsAPILoader } from '@agm/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MapsAPILoader, AgmMap } from '@agm/core';
 
-declare let google: any;
+declare var google: any;
 
 @Component({
   selector: 'app-mainpage',
@@ -14,6 +14,7 @@ export class MainpageComponent implements OnInit {
   lat: string | any | number;
   lng: string | any|number;
   zoom: string | any|number;
+  radius: string | any;
 
   public marker: any;
   dataTable: Object[]|any;
@@ -36,19 +37,30 @@ export class MainpageComponent implements OnInit {
 
   // search
   @ViewChild('search') public searchElementRef: ElementRef | any;
-
+  @ViewChild('AgmMap') public AgmMapElementRef: ElementRef | any;
+  
   constructor(
     private http: HttpClient,
     private ngZone: NgZone,
     private mapsAPILoader: MapsAPILoader) { 
-   
+
+  }
+
+  onMapLoad(mapInstance: google.maps.Map){
+    this.map = mapInstance;
+    // const bounds = new google.maps.LatLngBounds();
+    //   for (const mm of this.marker) {
+    //     bounds.extend(new google.maps.LatLng(mm.lat, mm.lng));
+    //   }
+    // this.map.fitBounds(bounds);
+
   }
 
   ngOnInit(): void {
     // load dia diem, search tìm kiếm
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation(); // dia diem hien tai
-     
+
       this.geoCoder = new google.maps.Geocoder();
 
       // Gợi ý tìm kiếm
@@ -71,20 +83,35 @@ export class MainpageComponent implements OnInit {
           this.lng = place.geometry.location.lng();
           this.addressSearch = place.formatted_address;
         
-          this.zoom = 10;
+          this.zoom = 15;
 
           console.log('address: ', this.addressSearch);
 
           // tọa độ lat, lng
           let _coordi = place.geometry?.location;
-          console.log('Place:', place);
+          // console.log('Place:', place);
+
+          // Xác định bán kính 
+          var bounds = this.map.getBounds()
+          var center = this.map.getCenter();
+          var ne_lat = bounds.getNorthEast().lat();
+          var center_lat = center.lat();
+          console.log("Ne_lat: ", ne_lat);
+          console.log("center: ", center_lat);
+
+          var ne = bounds.getNorthEast();
+          const _radius = google.maps.geometry.spherical.computeDistanceBetween(_coordi, ne) / 1000;
+          console.log("Radius: ", _radius);
+          this.radius = _radius;
         })
-    
+        
+        
+
         var body = {
           address: this.addressSearch,
           lat: this.lat,
           lng: this.lng,
-          radius: 500,
+          radius: this.radius,
         };
 
         this.searchResult = body;
@@ -100,19 +127,14 @@ export class MainpageComponent implements OnInit {
         console.log("searchLoc: ", searchLoc);
 
         // Tính khoảng cách
-        // var _kcoordi= new google.maps.LatLng(21.0031177, 105.8201408);
-        // var distanceInM = google.maps.geometry.spherical.computeDistanceBetween(_kcoordi, searchLoc);
-        // console.log("-----> distance", distanceInM);
         
         let temp3 = this.markerLatLng;
-        
-        console.log("Temp 3: ", temp3)
     
         // Dùng Filter để lọc, xóa những địa điểm không phù hợp luôn 
         this.markerInsideRadius = temp3.filter((loc: any) => {
           var markerLoc = new google.maps.LatLng(loc.lat, loc.lng);
           const distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(markerLoc, searchLoc)/1000;
-          console.log(" ----> Km: ", distanceInKm);
+          //console.log(" ----> Km: ", distanceInKm);
 
           if(distanceInKm < 10.0){
             return loc;
@@ -121,6 +143,7 @@ export class MainpageComponent implements OnInit {
         console.log('Result Inside Radius: ', this.markerInsideRadius);
 
       });
+
     });
 
 
@@ -220,7 +243,7 @@ export class MainpageComponent implements OnInit {
             lng: lng,
           };
         });
-        console.log('Lat Lng: number: ', this.markerLatLng);
+        
               
     });
 
@@ -237,6 +260,9 @@ export class MainpageComponent implements OnInit {
 
   onCircleClicked(event:any){
     this.showInfoWindow = !this.showInfoWindow;
+  }
+
+  mapIdle(){
   }
 
 }

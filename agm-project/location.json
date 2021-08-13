@@ -393,13 +393,6 @@
       "id": 520
     },
     {
-      "address": "Cầu Thanh Trì, Lĩnh Nam, Hoàng Mai, Hà Nội, Việt Nam",
-      "lat": 20.987778,
-      "lng": 105.8965275,
-      "radius": 500,
-      "id": 521
-    },
-    {
       "address": "Ba Đình, Hà Nội, Việt Nam",
       "lat": 21.0337815,
       "lng": 105.8140539,
@@ -419,6 +412,103 @@
       "lng": 105.7863638,
       "radius": 500,
       "id": 524
+    },
+    {
+      "address": "Cầu Vĩnh Tuy, p. Long Biên, Long Biên, Hà Nội, Việt Nam",
+      "lat": 21.0134503,
+      "lng": 105.8854958,
+      "radius": 500,
+      "id": 525
+    },
+    {
+      "address": "Hải Phòng, Việt Nam",
+      "lat": 20.8449115,
+      "lng": 106.6880841,
+      "radius": 500,
+      "id": 528
+    },
+    {
+      "address": "Tp. Hòa Bình, Hòa Bình, Việt Nam",
+      "lat": 20.8275154,
+      "lng": 105.3390793,
+      "radius": 500,
+      "id": 529
+    },
+    {
+      "address": "Tx. Sơn Tây, Sơn Tây, Hà Nội, Việt Nam",
+      "lat": 21.1162257,
+      "lng": 105.495325,
+      "radius": 500,
+      "id": 530
+    },
+    {
+      "address": "Granada, Tây Ban Nha",
+      "lat": 37.1773363,
+      "lng": -3.5985571,
+      "radius": 500,
+      "id": 531
+    },
+    {
+      "address": "Fresno, California, Hoa Kỳ",
+      "lat": 36.7377981,
+      "lng": -119.7871247,
+      "id": 532
+    },
+    {
+      "address": "Tp. Vinh, Nghệ An, Việt Nam",
+      "lat": 18.6795848,
+      "lng": 105.6813333,
+      "id": 533
+    },
+    {
+      "address": "Granada, Tây Ban Nha",
+      "lat": 37.1773363,
+      "lng": -3.5985571,
+      "id": 534
+    },
+    {
+      "address": "Hoa Kỳ",
+      "lat": 37.09024,
+      "lng": -95.712891,
+      "id": 535
+    },
+    {
+      "address": "Arizona, Hoa Kỳ",
+      "lat": 36.10692580000001,
+      "lng": -112.1129484,
+      "id": 536
+    },
+    {
+      "address": "Huy, Bỉ",
+      "lat": 50.5187153,
+      "lng": 5.239665599999999,
+      "id": 537
+    },
+    {
+      "address": "Huy, Bỉ",
+      "lat": 50.5187153,
+      "lng": 5.239665599999999,
+      "id": 538
+    },
+    {
+      "address": "Tp. Thái Nguyên, Thái Nguyên, Việt Nam",
+      "lat": 21.5671559,
+      "lng": 105.8252038,
+      "id": 539
+    },
+    {
+      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
+      "lat": 20.4463471,
+      "lng": 106.3365828,
+      "radius": 98.50806074395162,
+      "id": 540
+    },
+    {
+      "address": "TT. Hưng Hà, Hưng Hà, Thái Bình, Việt Nam",
+      "lat": 20.5929854,
+      "lng": 106.2198553,
+      "radius": 81.78168522918143,
+      "id": 541
     }
   ]
 }

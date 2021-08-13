@@ -8,10 +8,12 @@
     </div>
     
     <!-- Map -->
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" >
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
+        (mapReady) = "onMapLoad($event)"
+        (idle) = "mapIdle()" #AgmMap>
+        <!-- (boundsChange) = "boundsChange($event)" -->
         <!-- đánh dấu vị trí -->
-        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true">
-        </agm-marker>
+        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
 
         <!-- Hiện radius khi tìm kiếm  -->
         <div *ngIf="searchResult; then thenBlock; else elseBlock"></div>
@@ -24,7 +26,8 @@
                 [fillColor]="'red'" 
                 [editable]="true" 
                 [clickable] = "true"
-                (circleClick)= "onCircleClicked($event)">
+                (circleClick)= "onCircleClicked($event)"
+                #circle>
         
                 <agm-info-window 
                     [latitude]="searchResult.lat" 
@@ -64,6 +67,9 @@
             [latitude]="data.lat" 
             [longitude]="data.lng" 
             [markerDraggable]="true">
+            <agm-info-window>
+                <div>{{data.address}}</div>
+            </agm-info-window>
         </agm-marker>
 
     </agm-map>
