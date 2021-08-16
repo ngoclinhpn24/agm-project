@@ -37,7 +37,6 @@ export class MainpageComponent implements OnInit {
 
   // search
   @ViewChild('search') public searchElementRef: ElementRef | any;
-  @ViewChild('AgmMap') public AgmMapElementRef: ElementRef | any;
   
   constructor(
     private http: HttpClient,
@@ -93,20 +92,18 @@ export class MainpageComponent implements OnInit {
 
           // Xác định bán kính 
           var bounds = this.map.getBounds()
-          var center = this.map.getCenter();
-          var ne_lat = bounds.getNorthEast().lat();
+          var center = bounds.getCenter();
+          var ne = bounds.getNorthEast();
+          // var ne_lat = ne.lat();
           var center_lat = center.lat();
-          console.log("Ne_lat: ", ne_lat);
           console.log("center: ", center_lat);
 
-          var ne = bounds.getNorthEast();
-          const _radius = google.maps.geometry.spherical.computeDistanceBetween(_coordi, ne) / 1000;
+          // Km 
+          var _radius = google.maps.geometry.spherical.computeDistanceBetween(center, ne)/1000;
           console.log("Radius: ", _radius);
           this.radius = _radius;
         })
         
-        
-
         var body = {
           address: this.addressSearch,
           lat: this.lat,
@@ -254,7 +251,7 @@ export class MainpageComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.zoom = 10;
+        this.zoom = 15;
     });
   }}
 

@@ -11,7 +11,7 @@
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" 
         (mapReady) = "onMapLoad($event)"
         (idle) = "mapIdle()" #AgmMap>
-        <!-- (boundsChange) = "boundsChange($event)" -->
+        
         <!-- đánh dấu vị trí -->
         <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
 

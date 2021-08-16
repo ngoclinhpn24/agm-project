@@ -509,6 +509,76 @@
       "lng": 106.2198553,
       "radius": 81.78168522918143,
       "id": 541
+    },
+    {
+      "address": "73014 Gallipoli, Puglia, Lecce, Italy",
+      "lat": 40.05585079999999,
+      "lng": 17.9926137,
+      "radius": 58.13343584169967,
+      "id": 542
+    },
+    {
+      "address": "Ma-đrít, Madrid, Tây Ban Nha",
+      "lat": 40.4167754,
+      "lng": -3.7037902,
+      "radius": 1.4907814639740753,
+      "id": 543
+    },
+    {
+      "address": "Khu vực 51, Nevada, Hoa Kỳ",
+      "lat": 37.2430548,
+      "lng": -115.7930198,
+      "radius": 1.8178612968349843,
+      "id": 544
+    },
+    {
+      "address": "Hùng Vương, Hoàng Văn Thụ, Tp. Bắc Giang, Bắc Giang, Việt Nam",
+      "lat": 21.2751353,
+      "lng": 106.2017443,
+      "radius": 1.8178607951806567,
+      "id": 546
+    },
+    {
+      "address": "Pa ri, Pháp",
+      "lat": 48.856614,
+      "lng": 2.3522219,
+      "radius": 1.8178611918672662,
+      "id": 548
+    },
+    {
+      "address": "Đà Nẵng, Hải Châu, Đà Nẵng, Việt Nam",
+      "lat": 16.0544068,
+      "lng": 108.2021667,
+      "radius": 1.817844549244561,
+      "id": 550
+    },
+    {
+      "address": "Thái Hà, Trung Liệt, Đống Đa, Hà Nội, Việt Nam",
+      "lat": 21.0129882,
+      "lng": 105.820014,
+      "radius": 1.817860493701501,
+      "id": 551
+    },
+    {
+      "address": "7PMQ+6X3, Quỳnh Lộc, Quỳnh Lưu, Nghệ An, Việt Nam",
+      "lat": 19.2830024,
+      "lng": 105.7399257,
+      "radius": 0.028516170368328347,
+      "id": 552
+    },
+    {
+      "address": "Hà Nội, Hoàn Kiếm, Hà Nội, Việt Nam",
+      "lat": 21.0277644,
+      "lng": 105.8341598,
+      "radius": 0.0287261468664793,
+      "id": 553
+    },
+    {
+      "address": "CWQQ+P7V, Thạch Hải, Thạch Hà, Hà Tĩnh, Việt Nam",
+      "lat": 18.4393623,
+      "lng": 105.9381567,
+      "radius": 0.028406828644943045,
+      "id": 554
     }
   ]
 }
