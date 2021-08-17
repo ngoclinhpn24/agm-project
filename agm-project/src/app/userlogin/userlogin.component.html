@@ -1,6 +1,21 @@
-<div class="form_container">
+<!-- <div class="form_container">
     <button value="Login" (click) = "clickButton()">
         Login
     </button>    
-</div>
+</div> -->
+
+<div class="container">
+    <form [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)" >
+        <header> Account Login </header>
+        <label> Username </label>
+        <input type = "text" name = "username" formControlName = "username"/>
+        <div class = "note">At least 6 characters</div>
+            
+        <label>Password</label>
+        <input type = "password" class = "fortextbox" name = "passwd" formControlName = "passwd"/>
+            
+        <button [disabled] = "!formdata.valid" value = "Login">Login</button>
+    
+    </form>
+</div> 
 

@@ -1,10 +1,9 @@
-button {
+/* button {
     position: relative;
     margin-top: 50px;
     left: 50%;
     transform: translate(-50%, 0);
     color: white;
-    /* background: rgb(255, 136, 0);  */
     background: #ec5822;
     outline-color: #e99e83;
     border: 1px solid rgb(187, 186, 186);
@@ -14,7 +13,74 @@ button {
     box-shadow: 0px 0px 10px rgba(77, 76, 76, 0.4);
     cursor: pointer;
     
- }
-button:hover {
+} */
+/* button:hover {
     background: #f09a11; 
- }
+} */
+
+.container{
+    width: 400px;
+    margin-top: 50px;
+}
+
+form {
+    background:#fbfbf9;
+    width: 400px;
+    color: rgb(94, 93, 93);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+
+form header {
+    background: #ffac4d;
+    padding: 20px 20px;
+    color: black;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 400;
+    border-radius: 10px 10px 0 0;
+}
+
+form label {
+    position: relative;
+    margin-left: 20px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 3px;
+    
+}
+
+form input {
+    display: block;
+    width: 90%;
+    margin-left: 20px;
+    padding: 5px 15px;
+    font-size: 16px;
+    outline-color: rgb(182, 50, 50);
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+form .note {
+    margin-left: 20px;
+    font-size: 0.8em;
+    color: rgb(110, 110, 110);
+}
+
+form button {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(2, 2, 2);
+    background: #f8a443;
+    padding: 5px 20px;
+    font-size: 18px;
+    border-radius: 3px;
+    border-color: #ff8d0a;
+    cursor: pointer;
+    left: 38%;
+}
+
+form button:hover {
+    background: #fad15f;
+}

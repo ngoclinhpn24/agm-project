@@ -64,36 +64,35 @@ header {
     border-radius: 3px;
     border: 1px solid #ccc;
     outline-color: #289672;
- } 
+} 
 
 
- .info{
+.info{
     display:flex;
- }
+}
 
- .left{
-     
+.left{
+
     display:flex; 
     flex:1; 
-}
-   
+} 
 
 .right{
     display:flex; 
     flex:2; 
 }  
     
- /* form input:hover {
+/* form input:hover {
     background: #b6b5b8;
  } */
 
- button{
-     margin-right: 10px;
-     border: 1px solid #999;
-     outline-color: rgb(27, 23, 243);
-     border-radius: 3px;
- }
- button:hover{
+button{
+    margin-right: 10px;
+    border: 1px solid #999;
+    outline-color: rgb(27, 23, 243);
+    border-radius: 3px;
+}
+button:hover{
     background: #b6b5b8;
     /* background-color: rgb(86, 236, 86); */
  }
@@ -108,5 +107,3 @@ header {
     line-height: 30px;
     padding-left: 10px;
 }
-  
-  

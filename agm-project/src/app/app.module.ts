@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyserviceService } from './myservice.service';
-
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
 import { AgmCoreModule } from '@agm/core';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    FormsModule , ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA2zmfFiqBqvwBMOqEGlEzWqmSRAPaX3kM',
       libraries: ['places','drawing', 'geometry', 'visualization']

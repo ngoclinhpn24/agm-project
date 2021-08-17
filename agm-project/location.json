@@ -579,6 +579,34 @@
       "lng": 105.9381567,
       "radius": 0.028406828644943045,
       "id": 554
+    },
+    {
+      "address": "Đà Nẵng, Hải Châu, Đà Nẵng, Việt Nam",
+      "lat": 16.0544068,
+      "lng": 108.2021667,
+      "radius": 2.6495655796448836,
+      "id": 555
+    },
+    {
+      "address": "Pa ri, Pháp",
+      "lat": 48.856614,
+      "lng": 2.3522219,
+      "radius": 2.728114166897554,
+      "id": 556
+    },
+    {
+      "address": "Hùng Vương, Hoàng Văn Thụ, Tp. Bắc Giang, Bắc Giang, Việt Nam",
+      "lat": 21.2751353,
+      "lng": 106.2017443,
+      "radius": 2.6453436884105472,
+      "id": 558
+    },
+    {
+      "address": "Huỳnh Thúc Kháng, Láng Hạ, Đống Đa, Hà Nội, Việt Nam",
+      "lat": 21.0183528,
+      "lng": 105.8113313,
+      "radius": 2.649564428592066,
+      "id": 559
     }
   ]
 }
