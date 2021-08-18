@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MapsAPILoader, AgmMap } from '@agm/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { MapsAPILoader} from '@agm/core';
 
 declare var google: any;
 
@@ -115,7 +115,7 @@ export class MainpageComponent implements OnInit {
 
         // HTTP post request // save location to db
         this.http.post<any>(this.url, body).subscribe((data) => {
-          //this.postData = data;
+          
         });
 
         console.log("Body: ", body)
@@ -143,10 +143,10 @@ export class MainpageComponent implements OnInit {
 
     });
 
-
-    // lấy data file json 
+    let params = new HttpParams();
+    // lấy data file json
     // this.http.get(this.url, {params: params} ).subscribe((data) => 
-    this.http.get(this.url).toPromise().then((data) => {
+    this.http.get(this.url, {params}).toPromise().then((data) => {
         // marker: đã xử lý tất cả trường thông tin
         let temp: Object[] | any;
         temp = data;
@@ -239,9 +239,7 @@ export class MainpageComponent implements OnInit {
             lat: lat,
             lng: lng,
           };
-        });
-        
-              
+        });      
     });
 
   }
