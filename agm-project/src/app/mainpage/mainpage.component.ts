@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MapsAPILoader} from '@agm/core';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 declare var google: any;
 
@@ -88,22 +89,19 @@ export class MainpageComponent implements OnInit {
 
           // tọa độ lat, lng
           let _coordi = place.geometry?.location;
-          // console.log('Place:', place);
 
           // Xác định bán kính 
           var bounds = this.map.getBounds()
           var center = bounds.getCenter();
           var ne = bounds.getNorthEast();
           // var ne_lat = ne.lat();
-          var center_lat = center.lat();
-          console.log("center: ", center_lat);
-
           // Km 
           var _radius = google.maps.geometry.spherical.computeDistanceBetween(center, ne)/1000;
           console.log("Radius: ", _radius);
           this.radius = _radius;
         })
         
+        // body: Điểm tìm kiếm
         var body = {
           address: this.addressSearch,
           lat: this.lat,
@@ -114,134 +112,137 @@ export class MainpageComponent implements OnInit {
         this.searchResult = body;
 
         // HTTP post request // save location to db
-        this.http.post<any>(this.url, body).subscribe((data) => {
-          
-        });
+        // this.http.post<any>(this.url, body).subscribe((data) => {
+        // });
 
-        console.log("Body: ", body)
+        console.log("Body: ", body);
+    
 
         var searchLoc = new google.maps.LatLng(body.lat, body.lng)
         console.log("searchLoc: ", searchLoc);
 
         // Tính khoảng cách
-        
-        let temp3 = this.markerLatLng;
-    
         // Dùng Filter để lọc, xóa những địa điểm không phù hợp luôn 
-        this.markerInsideRadius = temp3.filter((loc: any) => {
-          var markerLoc = new google.maps.LatLng(loc.lat, loc.lng);
-          const distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(markerLoc, searchLoc)/1000;
-          //console.log(" ----> Km: ", distanceInKm);
+        // let temp3 = this.markerLatLng;
+        // this.markerInsideRadius = temp3.filter((loc: any) => {
+        //   var markerLoc = new google.maps.LatLng(loc.lat, loc.lng);
+        //   const distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(markerLoc, searchLoc)/1000;
+        //   if(distanceInKm < 10.0){
+        //     return loc;
+        //   }
+        // });
+        console.log('Result Inside Radius: ', this.markerInsideRadius);
 
-          if(distanceInKm < 10.0){
-            return loc;
+         // HTTP GET, {fromObject: {lat: this.searchResult.lat , lng: this.searchResult.lng}}
+        const httpParams = new HttpParams({
+          fromObject: {
+            lat: body.lat, 
+            lng: body.lng,
+            radius: body.radius
           }
         });
-        console.log('Result Inside Radius: ', this.markerInsideRadius);
+        // lấy data file json
+        // this.http.get(this.url, {params: params} ).toPromise().then((data) => 
+        this.http.get(this.url, {params: httpParams}).subscribe((data) => {
+            // marker: đã xử lý tất cả trường thông tin
+            let temp: Object[] | any;
+            temp = data;
+            this.marker = temp.map((location: any) => {
+              var concaveType = location.concaveType;
+              var concaveCode = location.concaveCode;
+              var source = location.source;
+              var address = location.address;
+              var lat: number = +location.lat;
+              var lng: number = +location.lng;
+              var radius: number = +location.radius;
+              var areaName = location.areaName;
+              var provinceName = location.provinceName;
+              var districtName = location.districtName;
+              var villageName = location.villageName;
+              var ruralName = location.ruralName;
+              var locationName = location.locationName;
+              switch (concaveType) {
+                case 0:
+                  concaveType = '2G';
+                  break;
+                case 1:
+                  concaveType = '3G';
+                  break;
+                case 2:
+                  concaveType = '4G';
+                  break;
+              }
+      
+              switch (source) {
+                case 0:
+                  source = 'Bản ghi MRR';
+                  break;
+                case 1:
+                  source = 'Đo kiểm PAKH';
+                  break;
+                case 2:
+                  source = 'Đo kiểm driving test';
+                  break;
+                case 3:
+                  source = 'Mô phỏng ATOLL';
+                  break;
+                case 4:
+                  source = 'Cung cấp từ VTT ';
+                  break;
+              }
+              return {
+                concaveCode: concaveCode,
+                concaveType: concaveType,
+                source: source,
+                address: address,
+                lat: lat,
+                lng: lng,
+                radius: radius,
+                areaName: areaName,
+                provinceName: provinceName,
+                districtName: districtName,
+                villageName: villageName,
+                ruralName: ruralName,
+                locationName: locationName,
+              };
+
+            });
+
+            // convert lat, lng, radius sang number => circle
+            let temp1: Object[] | any;
+            temp1 = data;
+            
+            this.circle = temp1.map((location: any) => {
+              var lat: number = +location.lat; 
+              var lng: number = +location.lng;
+              var radius: number = +location.radius;
+      
+              return {
+                lat: lat,
+                lng: lng,
+                radius: radius,
+              };
+            }); 
+            
+             // Lay lat, lng => tính khoảng cách
+            let temp2: Object[] | any;
+            temp2 = data;
+        
+            this.markerLatLng= temp2.map((location: any) => {
+              var lat: number = +location.lat; 
+              var lng: number = +location.lng;
+              return {
+                lat: lat,
+                lng: lng,
+              };
+            }); 
+        });
 
       });
 
+
     });
-
-    let params = new HttpParams();
-    // lấy data file json
-    // this.http.get(this.url, {params: params} ).subscribe((data) => 
-    this.http.get(this.url, {params}).toPromise().then((data) => {
-        // marker: đã xử lý tất cả trường thông tin
-        let temp: Object[] | any;
-        temp = data;
-        this.marker = temp.map((location: any) => {
-          var concaveType = location.concaveType;
-          var concaveCode = location.concaveCode;
-          var source = location.source;
-          var address = location.address;
-          var lat: number = +location.lat;
-          var lng: number = +location.lng;
-          var radius: number = +location.radius;
-          var areaName = location.areaName;
-          var provinceName = location.provinceName;
-          var districtName = location.districtName;
-          var villageName = location.villageName;
-          var ruralName = location.ruralName;
-          var locationName = location.locationName;
-          switch (concaveType) {
-            case 0:
-              concaveType = '2G';
-              break;
-            case 1:
-              concaveType = '3G';
-              break;
-            case 2:
-              concaveType = '4G';
-              break;
-          }
   
-          switch (source) {
-            case 0:
-              source = 'Bản ghi MRR';
-              break;
-            case 1:
-              source = 'Đo kiểm PAKH';
-              break;
-            case 2:
-              source = 'Đo kiểm driving test';
-              break;
-            case 3:
-              source = 'Mô phỏng ATOLL';
-              break;
-            case 4:
-              source = 'Cung cấp từ VTT ';
-              break;
-          }
-          return {
-            concaveCode: concaveCode,
-            concaveType: concaveType,
-            source: source,
-            address: address,
-            lat: lat,
-            lng: lng,
-            radius: radius,
-            areaName: areaName,
-            provinceName: provinceName,
-            districtName: districtName,
-            villageName: villageName,
-            ruralName: ruralName,
-            locationName: locationName,
-          };
-  
-        });
-
-        // convert lat, lng, radius sang number => circle
-        let temp1: Object[] | any;
-        temp1 = data;
-        
-        this.circle = temp1.map((location: any) => {
-          var lat: number = +location.lat; 
-          var lng: number = +location.lng;
-          var radius: number = +location.radius;
-  
-          return {
-            lat: lat,
-            lng: lng,
-            radius: radius,
-          };
-        });
-        
-        
-        // Lay lat, lng => tính khoảng cách
-        let temp2: Object[] | any;
-        temp2 = data;
-    
-        this.markerLatLng= temp2.map((location: any) => {
-          var lat: number = +location.lat; 
-          var lng: number = +location.lng;
-          return {
-            lat: lat,
-            lng: lng,
-          };
-        });      
-    });
-
   }
 
   setCurrentLocation(){

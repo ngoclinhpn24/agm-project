@@ -21,7 +21,7 @@ export class UserloginComponent implements OnInit {
   // }
 
   onClickSubmit(data:any){
-    console.log(data.username);
+    // console.log(data.username);
     alert("Login Successful");
     this.router.navigate(['app-mainpage'])
   }

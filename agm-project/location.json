@@ -365,13 +365,6 @@
       "id": 505
     },
     {
-      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
-      "lat": 20.4463471,
-      "lng": 106.3365828,
-      "radius": 500,
-      "id": 510
-    },
-    {
       "address": "Đống Đa, Hà Nội, Việt Nam",
       "lat": 21.0180725,
       "lng": 105.8299495,
@@ -442,13 +435,6 @@
       "id": 530
     },
     {
-      "address": "Granada, Tây Ban Nha",
-      "lat": 37.1773363,
-      "lng": -3.5985571,
-      "radius": 500,
-      "id": 531
-    },
-    {
       "address": "Fresno, California, Hoa Kỳ",
       "lat": 36.7377981,
       "lng": -119.7871247,
@@ -482,12 +468,6 @@
       "address": "Huy, Bỉ",
       "lat": 50.5187153,
       "lng": 5.239665599999999,
-      "id": 537
-    },
-    {
-      "address": "Huy, Bỉ",
-      "lat": 50.5187153,
-      "lng": 5.239665599999999,
       "id": 538
     },
     {
@@ -495,13 +475,6 @@
       "lat": 21.5671559,
       "lng": 105.8252038,
       "id": 539
-    },
-    {
-      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
-      "lat": 20.4463471,
-      "lng": 106.3365828,
-      "radius": 98.50806074395162,
-      "id": 540
     },
     {
       "address": "TT. Hưng Hà, Hưng Hà, Thái Bình, Việt Nam",
@@ -532,13 +505,6 @@
       "id": 544
     },
     {
-      "address": "Hùng Vương, Hoàng Văn Thụ, Tp. Bắc Giang, Bắc Giang, Việt Nam",
-      "lat": 21.2751353,
-      "lng": 106.2017443,
-      "radius": 1.8178607951806567,
-      "id": 546
-    },
-    {
       "address": "Pa ri, Pháp",
       "lat": 48.856614,
       "lng": 2.3522219,
@@ -551,13 +517,6 @@
       "lng": 108.2021667,
       "radius": 1.817844549244561,
       "id": 550
-    },
-    {
-      "address": "Thái Hà, Trung Liệt, Đống Đa, Hà Nội, Việt Nam",
-      "lat": 21.0129882,
-      "lng": 105.820014,
-      "radius": 1.817860493701501,
-      "id": 551
     },
     {
       "address": "7PMQ+6X3, Quỳnh Lộc, Quỳnh Lưu, Nghệ An, Việt Nam",
@@ -616,18 +575,235 @@
       "id": 560
     },
     {
-      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
-      "lat": 20.4463471,
-      "lng": 106.3365828,
-      "radius": 0.027079317225284037,
-      "id": 561
-    },
-    {
       "address": "Mai Dịch, Cầu Giấy, Hà Nội, Việt Nam",
       "lat": 21.0395659,
       "lng": 105.7740712,
       "radius": 1.8178612748652774,
       "id": 562
+    },
+    {
+      "address": "Thái Hà, Trung Liệt, Đống Đa, Hà Nội, Việt Nam",
+      "lat": 21.0129882,
+      "lng": 105.820014,
+      "radius": 1.8178612846294182,
+      "id": 563
+    },
+    {
+      "address": "Qatar",
+      "lat": 25.354826,
+      "lng": 51.183884,
+      "radius": 2.6495656436909676,
+      "id": 564
+    },
+    {
+      "address": "Am-xtéc-đam, Hà Lan",
+      "lat": 52.3675734,
+      "lng": 4.9041389,
+      "radius": 2.6495656436909676,
+      "id": 565
+    },
+    {
+      "address": "Tx. Phú Thọ, Phú Thọ, Việt Nam",
+      "lat": 21.4219791,
+      "lng": 105.2296992,
+      "radius": 2.6495656436909676,
+      "id": 566
+    },
+    {
+      "address": "Arizona, Hoa Kỳ",
+      "lat": 36.10692580000001,
+      "lng": -112.1129484,
+      "radius": 1.8178612626589288,
+      "id": 567
+    },
+    {
+      "address": "Toulouse, Pháp",
+      "lat": 43.604652,
+      "lng": 1.444209,
+      "radius": 1.8178613151435288,
+      "id": 568
+    },
+    {
+      "address": "Houston, Texas, Hoa Kỳ",
+      "lat": 29.7604267,
+      "lng": -95.3698028,
+      "radius": 1.8178609147967866,
+      "id": 569
+    },
+    {
+      "address": "San Diego, California, Hoa Kỳ",
+      "lat": 32.715738,
+      "lng": -117.1610838,
+      "radius": 1.8178612333651367,
+      "id": 570
+    },
+    {
+      "address": "Liêm Chính, Phủ Lý, Hà Nam, Việt Nam",
+      "lat": 20.5340707,
+      "lng": 105.9267137,
+      "radius": 1.817860900152766,
+      "id": 573
+    },
+    {
+      "address": "Am-xtéc-đam, Hà Lan",
+      "lat": 52.3675734,
+      "lng": 4.9041389,
+      "radius": 1.8178611955299218,
+      "id": 575
+    },
+    {
+      "address": "Hyderabad, Sindh, Pakistan",
+      "lat": 25.3959687,
+      "lng": 68.357776,
+      "radius": 1.8178613261300693,
+      "id": 576
+    },
+    {
+      "address": "Roma, Italy",
+      "lat": 41.9027835,
+      "lng": 12.4963655,
+      "radius": 1.81786070241748,
+      "id": 577
+    },
+    {
+      "address": "Thành phố Québec, Québec, Canada",
+      "lat": 46.8138783,
+      "lng": -71.2079809,
+      "radius": 2.649565576086567,
+      "id": 578
+    },
+    {
+      "address": "Nantes, Pháp",
+      "lat": 47.218371,
+      "lng": -1.553621,
+      "radius": 1.8178609233408083,
+      "id": 579
+    },
+    {
+      "address": "Rimini, Italy",
+      "lat": 44.0678288,
+      "lng": 12.5695158,
+      "radius": 1.817861010001535,
+      "id": 581
+    },
+    {
+      "address": "Grand Trunk Rd, Shahdara, Lahore, Punjab, Pakistan",
+      "lat": 31.63153,
+      "lng": 74.2874527,
+      "radius": 1.817861096662758,
+      "id": 582
+    },
+    {
+      "address": "Haridwar, Uttarakhand, Ấn Độ",
+      "lat": 29.9456906,
+      "lng": 78.16424780000001,
+      "radius": 1.6583335462015278,
+      "id": 583
+    },
+    {
+      "address": "Đông Hưng, Thái Bình, Việt Nam",
+      "lat": 20.5640924,
+      "lng": 106.3699271,
+      "radius": 1.8178611955277177,
+      "id": 584
+    },
+    {
+      "address": "42 Hangang-daero, Hangangno 3(sam)-ga, Yongsan-gu, Seoul, Hàn Quốc",
+      "lat": 37.5245235,
+      "lng": 126.9641425,
+      "radius": 1.8178610270891833,
+      "id": 587
+    },
+    {
+      "address": "Roma, Italy",
+      "lat": 41.9027835,
+      "lng": 12.4963655,
+      "radius": 1.817860774432347,
+      "id": 588
+    },
+    {
+      "address": "Huyton, Vương Quốc Anh",
+      "lat": 53.4154747,
+      "lng": -2.8257456,
+      "radius": 1.817861352980936,
+      "id": 589
+    },
+    {
+      "address": "Tahirpur Rd, GTB Enclave, Dilshad Garden, New Delhi, Delhi 110095, Ấn Độ",
+      "lat": 28.68400489999999,
+      "lng": 77.3094137,
+      "radius": 5.128857403942549,
+      "id": 591
+    },
+    {
+      "address": "Hyderabad, Sindh, Pakistan",
+      "lat": 25.3959687,
+      "lng": 68.357776,
+      "radius": 2.64956494985582,
+      "id": 592
+    },
+    {
+      "address": "Am-xtéc-đam, Hà Lan",
+      "lat": 52.3675734,
+      "lng": 4.9041389,
+      "radius": 2.5644726990877773,
+      "id": 594
+    },
+    {
+      "address": "Hyères, Pháp",
+      "lat": 43.120541,
+      "lng": 6.128639,
+      "radius": 2.649565542284697,
+      "id": 595
+    },
+    {
+      "address": "Hamburg, Đức",
+      "lat": 53.5510846,
+      "lng": 9.9936818,
+      "radius": 2.07205009337194,
+      "id": 596
+    },
+    {
+      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
+      "lat": 20.4463471,
+      "lng": 106.3365828,
+      "radius": 2.649565736202364,
+      "id": 597
+    },
+    {
+      "address": "TT. Hưng Hà, Hưng Hà, Thái Bình, Việt Nam",
+      "lat": 20.5929854,
+      "lng": 106.2198553,
+      "radius": 1.5055510165647632,
+      "id": 598
+    },
+    {
+      "address": "Hamburg, Đức",
+      "lat": 53.5510846,
+      "lng": 9.9936818,
+      "radius": 1.499662898747191,
+      "id": 599
+    },
+    {
+      "address": "TT. Hưng Hà, Hưng Hà, Thái Bình, Việt Nam",
+      "lat": 20.5929854,
+      "lng": 106.2198553,
+      "radius": 1.6865011495212856,
+      "id": 600
+    },
+    {
+      "address": "339 Queens Quay W, Toronto, ON M5V 1A2, Canada",
+      "lat": 43.6377999,
+      "lng": -79.38817089999999,
+      "radius": 1.4996631685938893,
+      "id": 601
+    },
+    {
+      "address": "Genova, Italy",
+      "lat": 44.4056499,
+      "lng": 8.946256,
+      "radius": 2.054447384110739,
+      "id": 602
     }
   ]
 }
