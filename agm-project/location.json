@@ -757,20 +757,6 @@
       "id": 595
     },
     {
-      "address": "Hamburg, Đức",
-      "lat": 53.5510846,
-      "lng": 9.9936818,
-      "radius": 2.07205009337194,
-      "id": 596
-    },
-    {
-      "address": "Tp. Thái Bình, Thái Bình, Việt Nam",
-      "lat": 20.4463471,
-      "lng": 106.3365828,
-      "radius": 2.649565736202364,
-      "id": 597
-    },
-    {
       "address": "TT. Hưng Hà, Hưng Hà, Thái Bình, Việt Nam",
       "lat": 20.5929854,
       "lng": 106.2198553,
@@ -783,13 +769,6 @@
       "lng": 9.9936818,
       "radius": 1.499662898747191,
       "id": 599
-    },
-    {
-      "address": "TT. Hưng Hà, Hưng Hà, Thái Bình, Việt Nam",
-      "lat": 20.5929854,
-      "lng": 106.2198553,
-      "radius": 1.6865011495212856,
-      "id": 600
     },
     {
       "address": "339 Queens Quay W, Toronto, ON M5V 1A2, Canada",
