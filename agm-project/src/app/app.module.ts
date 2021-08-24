@@ -45,7 +45,7 @@ const appRoutes: Routes = [
 
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [MyserviceService],
+  providers: [],
   bootstrap: [AppComponent],
   
 })
