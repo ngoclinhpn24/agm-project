@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone, ViewChild, ElementRef, AfterViewInit } from 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { MapsAPILoader} from '@agm/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-
+import {SearchResult} from './searchResult';
 declare var google: any;
 
 @Component({
@@ -16,6 +16,8 @@ export class MainpageComponent implements OnInit {
   lng: string | any|number;
   zoom: string | any|number;
   radius: string | any;
+
+  lstResult:SearchResult[]|any;
 
   public marker: any;
   marker1:any;
@@ -80,6 +82,7 @@ export class MainpageComponent implements OnInit {
             return;
           }
 
+          console.log("PLACE: ", place.geometry)
           // tra ve dia chi co: lat, lng, zoom
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
@@ -120,24 +123,22 @@ export class MainpageComponent implements OnInit {
         console.log("Body: ", body);
     
         var searchLoc = new google.maps.LatLng(body.lat, body.lng)
-        console.log("searchLoc: ", searchLoc);
 
          // HTTP GET, {fromObject: {lat: this.searchResult.lat , lng: this.searchResult.lng}}
-        const httpParams = new HttpParams({
+        let httpParams = new HttpParams({
           fromObject: {
             lat: body.lat, 
             lng: body.lng,
             radius: body.radius
           }
         });
+
         // lấy data file json {params: httpParams}
-        this.http.get(this.url, {params: httpParams}).subscribe((data) => {
+        this.http.get(this.url, {params: httpParams}).subscribe((data) => {  
             // marker: đã xử lý tất cả trường thông tin
-            this.marker1 = data;
-            console.log("masagdgshtc6s: ", this.marker1)
             let temp: Object[] | any;
             temp = data;
-            instance.marker = temp.map((location: any) => {
+            this.marker = temp.map((location: any) => {
               var concaveType = location.concaveType;
               var concaveCode = location.concaveCode;
               var source = location.source;
@@ -198,7 +199,7 @@ export class MainpageComponent implements OnInit {
   
             });
   
-            console.log("---> marker", instance.marker)
+            console.log("---> marker", this.marker)
   
             // convert lat, lng, radius sang number => circle
             let temp1: Object[] | any;
@@ -215,7 +216,7 @@ export class MainpageComponent implements OnInit {
                 radius: radius,
               };
             }); 
-
+  
             // Tính khoảng cách
             // Dùng Filter để lọc, xóa những địa điểm không phù hợp luôn 
             let temp3 = instance.marker;
@@ -230,13 +231,8 @@ export class MainpageComponent implements OnInit {
             console.log('Result Inside Radius: ', this.markerInsideRadius);
             
         });
-  
-
-       
 
       });
-
-     
 
     });
   

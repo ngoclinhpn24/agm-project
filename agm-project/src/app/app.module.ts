@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyserviceService } from './myservice.service';
+
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
 import { AgmCoreModule } from '@agm/core';
@@ -16,12 +16,12 @@ import { TableDataComponent } from './table-data/table-data.component';
 
 const appRoutes: Routes = [
   {
-     path: '',
-     component: UserloginComponent
+    path: '',
+    component: UserloginComponent
   },
   {
-     path: 'app-mainpage',
-     component: MainpageComponent
+    path: 'app-mainpage',
+    component: MainpageComponent
   }
 ];
 
