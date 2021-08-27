@@ -60,7 +60,7 @@ export class MainpageComponent implements OnInit {
 
   ngOnInit(): void {
     
-    // let instance = this;
+    let instance = this;
     // load dia diem, search tìm kiếm
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation(); // dia diem hien tai
@@ -81,7 +81,6 @@ export class MainpageComponent implements OnInit {
             return;
           }
 
-          console.log("PLACE: ", place.geometry)
           // tra ve dia chi co: lat, lng, zoom
           this.lat = place.geometry.location.lat();
           this.lng = place.geometry.location.lng();
@@ -123,7 +122,7 @@ export class MainpageComponent implements OnInit {
     
         var searchLoc = new google.maps.LatLng(body.lat, body.lng)
 
-        // HTTP GET, {fromObject: {lat: this.searchResult.lat , lng: this.searchResult.lng}}
+        // HTTP GET
         let httpParams = new HttpParams({
           fromObject: {
             lat: body.lat, 
@@ -131,12 +130,8 @@ export class MainpageComponent implements OnInit {
             radius: body.radius,
           }
         });
-
-        this.http.get(this.url, {params: httpParams}).subscribe((data) => {
-        });
-
-        this.http.get(this.url).subscribe((data) => {  
-          // marker: đã xử lý tất cả trường thông tin
+        
+        this.http.get(this.url+'?'+'lat='+body.lat+'&'+'lng='+body.lng+'&'+'radius='+body.radius).subscribe((data) => {
           let temp: Object[] | any;
           temp = data;
           this.marker = temp.map((location: any) => {
@@ -237,7 +232,7 @@ export class MainpageComponent implements OnInit {
 
           // Tính khoảng cách
           // Dùng Filter để lọc, xóa những địa điểm không phù hợp luôn 
-          let temp3 = this.markerLatLng;
+          let temp3 = instance.markerLatLng;
             
           this.markerInsideRadius = temp3.filter((loc: any) => {
               var markerLoc = new google.maps.LatLng(loc.lat, loc.lng);
@@ -248,8 +243,12 @@ export class MainpageComponent implements OnInit {
           });
           console.log('Result Inside Radius: ', this.markerInsideRadius);
         });
-    
+          
       });
+
+        // this.http.get(this.url).subscribe((data) => {  
+        //   // marker: đã xử lý tất cả trường thông tin
+        // });
     });
     
   }
