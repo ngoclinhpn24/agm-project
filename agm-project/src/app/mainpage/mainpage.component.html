@@ -64,15 +64,7 @@
         </ng-template>
         <ng-template #elseBlock></ng-template>
 
-
-        <agm-marker *ngFor="let data of markerInsideRadius" 
-            [latitude]="data.lat" 
-            [longitude]="data.lng" 
-            [markerDraggable]="true">
-            <agm-info-window>
-                <div>{{data.address}}</div>
-            </agm-info-window>
-        </agm-marker>
+        <!-- Hiện circle điểm trong file json thỏa mãn khoảng cách -->
         <agm-circle *ngFor="let data of markerInsideRadius" 
             [latitude] = "data.lat"
             [longitude] = "data.lng"
