@@ -97,6 +97,7 @@ export class MainpageComponent implements OnInit {
           var bounds = this.map.getBounds()
           var center = bounds.getCenter();
           var ne = bounds.getNorthEast();
+        
           // var ne_lat = ne.lat();
           // Km 
           var _radius = google.maps.geometry.spherical.computeDistanceBetween(center, ne)/1000;
@@ -122,16 +123,19 @@ export class MainpageComponent implements OnInit {
     
         var searchLoc = new google.maps.LatLng(body.lat, body.lng)
 
-        // HTTP GET
+        
+        // HTTP GET body.radius
         let httpParams = new HttpParams({
           fromObject: {
-            lat: body.lat, 
-            lng: body.lng,
-            radius: body.radius,
+            lat_gte: body.lat-body.radius, 
+            lng_gte: body.lng-body.radius,
+            lat_lte: body.lat+body.radius,
+            lng_lte: body.lng+body.radius,  
           }
         });
-        
-        this.http.get(this.url+'?'+'lat='+body.lat+'&'+'lng='+body.lng+'&'+'radius='+body.radius).subscribe((data) => {
+        // +'lat='+body.lat+'&'+'lng='+body.lng+'&'+'radius='+body.radius
+        this.http.get(this.url, {params: httpParams})
+        .subscribe((data) => {
           let temp: Object[] | any;
           temp = data;
           this.marker = temp.map((location: any) => {
@@ -258,7 +262,7 @@ export class MainpageComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.zoom = 15;
+        this.zoom = 10;
     });
   }}
 
